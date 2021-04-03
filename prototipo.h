@@ -2,7 +2,7 @@
 #define PROTOTIPO_H_
 
 #include <iostream>
-#include <string>
+#include <sstream>
 
 class Funcao
 {
@@ -35,7 +35,7 @@ public:
 };
 
 Funcao::Funcao(std::string funcao_input)
-{
+{    
 }
 
 Funcao::~Funcao()
