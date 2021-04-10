@@ -4,13 +4,10 @@
 
 #include "Funcao.h"
 #include "Calculo_Analitico.h"
-#include "Grafico.h"
 
 
 // Carrega a string _input e chama o método get_parametros da classe Funcao e chama os métodos get_parametros_derivada_integral.
-Calculo_Analitico::Calculo_Analitico(std::string input){
-   _input = input;
-   get_parametros(_input);
+Calculo_Analitico::Calculo_Analitico(std::string input): Funcao(input){
    get_parametros_derivada_integral();
  }
 
@@ -44,22 +41,28 @@ void Calculo_Analitico::get_max_e_min(){
 
    //...
 
-   std::cout << maximo << " & " << minimo << std::endl;
+   //std::cout << maximo << " & " << minimo << std::endl;
    _maximo = maximo;
    _minimo = minimo;
 } 
 
 
+// Retorna o valor da função aplicada no ponto.
+double Calculo_Analitico::retorna_valor(double ponto){
+   return Funcao::retorna_valor(ponto);
+}  
+
+
 // Retorna o valor da função derivada no ponto ou o valor da função Primitiva de constante 0 no ponto.
 double Calculo_Analitico::retorna_valor(std::string parametro, double ponto){
-   if(derivada == "derivada"){
+   if(parametro == "derivada"){
       double dfx0;
 
       //... 
 
       return dfx0;
    }else{
-      if(integral == "integral"){
+      if(parametro == "integral"){
          double int_f;
 
          //...

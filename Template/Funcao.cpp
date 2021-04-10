@@ -3,7 +3,6 @@
 #include <vector>
 
 #include "Funcao.h"
-#include "Grafico.h"
 
 // Carrega a string _input e chama o método get_parametros.
 Funcao::Funcao(std::string input) {
@@ -30,7 +29,7 @@ void Funcao::get_dominio(){
 
    //...
 
-   std::cout << dominio << std::endl;
+   //std::cout << dominio << std::endl;
    _dominio = dominio;
 } 
 
@@ -41,7 +40,7 @@ void Funcao::get_imagem(){
 
    //...
 
-   std::cout << imagem << std::endl;
+   //std::cout << imagem << std::endl;
    _imagem = imagem;
 } 
 
@@ -52,7 +51,7 @@ void Funcao::get_raizes(){
 
    //...
 
-   std::cout << raizes << std::endl;
+   //std::cout << raizes << std::endl;
    _raizes = raizes;
 } 
 

@@ -5,7 +5,6 @@
 #include "Funcao.h"
 #include "Calculo_Numerico.h"
 #include "Calculo_Analitico.h"
-#include "Grafico.h"
 
 int main(){
    
@@ -15,7 +14,7 @@ int main(){
    f1.get_imagem();
    f1.get_raizes(); 
 
-   double f1_x0 = f1.retorna_valor(5.5);
+   double F1_x0 = f1.retorna_valor(5.5);
 
 
    // Todos os métodos que podemos usar em um objeto da classe Calculo_Numerico.
@@ -25,9 +24,9 @@ int main(){
    f2.get_raizes(); 
    f2.get_max_e_min(-100., 100);
 
-   double   f2_x0  = f2.retorna_valor(11.);
-   double d_f2_x0  = f2.retorna_valor("derivada", 13.1);
-   double i_f2_ab  = f2.retorna_valor("integral", 0., 15.);
+   double   F2_x0  = f2.retorna_valor(11.);
+   double d_F2_x0  = f2.retorna_valor("derivada", 13.1);
+   double i_F2_ab  = f2.retorna_valor("integral", 0., 15.);
 
 
    // Todos os métodos que podemos usar em um objeto da classe Calculo_Analitico.
@@ -37,10 +36,10 @@ int main(){
    f3.get_raizes(); 
    f3.get_max_e_min();
 
-   double   f3_x0  = f3.retorna_valor(-5.);
-   double d_f3_x0  = f3.retorna_valor("derivada", 13.1);
-   double i_f3_x0  = f3.retorna_valor("integral", 5.);
-   double i_f3_ab  = f3.retorna_valor("integral", -5., 5.);
+   double   F3_x0  = f3.retorna_valor(-5.);
+   double d_F3_x0  = f3.retorna_valor("derivada", 13.1);
+   double i_F3_x0  = f3.retorna_valor("integral", 5.);
+   double i_F3_ab  = f3.retorna_valor("integral", -5., 5.);
 
    // Faltou os Gráficos.
 

@@ -5,8 +5,6 @@
 #include <string>
 #include <vector>
 
-#include "Grafico.h"
-
 class Funcao {
 protected:
    std::string _input;
@@ -16,14 +14,13 @@ protected:
    std::string _dominio;
    std::string _imagem;
 
-   const std::string _tipo ("Polinomio");
-
+   std::string _tipo; // Por hora sem método: _tipo = "Polinomio".
 
    void get_parametros(std::string input); // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
 
 public:
    Funcao(std::string input); // Carrega a string _input e chama o método get_parametros.
-   ~Funcao();
+   //~Funcao();
 
    void get_dominio(); // Escreve o dominio no terminal e carrega a string _dominio.
    void get_imagem();  // Escreve a  imagem no terminal e carrega a string _imagem.
