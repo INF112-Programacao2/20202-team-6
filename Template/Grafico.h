@@ -14,7 +14,7 @@ protected:
 
 public:
    gnuplot(); 
-   ~gnuplot();
+   //~gnuplot();
 };
 
 class Grafico : public gnuplot {
@@ -22,7 +22,7 @@ private:
 
 public:
    Grafico(); 
-   ~Grafico();
+   //~Grafico();
 };
 
 #endif
