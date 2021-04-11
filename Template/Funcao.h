@@ -16,6 +16,7 @@ protected:
 
    std::string _tipo; // Por hora sem método: _tipo = "Polinomio".
 
+private:
    void get_parametros(std::string input); // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
 
 public:
