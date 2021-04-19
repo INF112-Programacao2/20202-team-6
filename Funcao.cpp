@@ -62,8 +62,8 @@ void Funcao::get_parametros(std::string input){
    // Percorrendo todas as Matches encontradas até não ter mais nenhuma (pos fica igual a end)
    for( ; pos!=end; pos++)
    {
-      /* pos->str(x) é o retorno da match em std::string e x é o indice que identifica um grupo. A cada pos++ temos uma match achada pelo pos ao ser construido
-         Exemplo: -2x^3-5x+x^2+9
+      /* pos->str(x) é o retorno da match em std::string e x é o indice que identifica um grupo. A cada pos++ temos as Matches que foram encontradas pelo iterador pos ao ser construido
+         Exemplo: -2/3x^(3/8)-5x+x^2+9
          
          Grupo 0: Match total
          Grupo 1: Numerador do coeficiente
