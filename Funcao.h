@@ -29,5 +29,8 @@ public:
 
    double retorna_valor(double ponto); // Retorna o valor da função aplicada no ponto.
 };
-#endif
 
+int sign(std::string t);
+double get_denominador(std::string t);
+
+#endif

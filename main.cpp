@@ -9,7 +9,7 @@
 int main(){
    
    // Todos os métodos que podemos usar em um objeto da classe Funcao.
-   Funcao f1("-2*x**3-5*x**2+7*x+9");
+   Funcao f1("-2x^3-5x^2+7x+9");
    f1.get_dominio();
    f1.get_imagem();
    f1.get_raizes(); 
@@ -18,7 +18,7 @@ int main(){
 
 
    // Todos os métodos que podemos usar em um objeto da classe Calculo_Numerico.
-   Calculo_Numerico f2("+2*x**7-12*x**4+2*x+81");
+   Calculo_Numerico f2("2x^7-12x^4+2x+81");
    f2.get_dominio();
    f2.get_imagem();
    f2.get_raizes(); 
@@ -30,7 +30,7 @@ int main(){
 
 
    // Todos os métodos que podemos usar em um objeto da classe Calculo_Analitico.
-   Calculo_Analitico f3("+3*x**5-7*x**3+17*x-77");
+   Calculo_Analitico f3("3x^5-7x^3+17x-77");
    f3.get_dominio();
    f3.get_imagem();
    f3.get_raizes(); 
@@ -45,6 +45,3 @@ int main(){
 
    return 0;
 }
-
-
-
