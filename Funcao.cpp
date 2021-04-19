@@ -32,7 +32,6 @@ double get_denominador(std::string t)
 
 // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
 void Funcao::get_parametros(std::string input){
-   // Expressão Regular que identifica os coeficientes dentro de um polinomio.
    /*
       Explicando a expressão regular:
 
@@ -46,10 +45,14 @@ void Funcao::get_parametros(std::string input){
       (?: x (?: \\^ (?: \\(? (\\d+) (?: \\/ (\\d+) \\) )? )? )? )?      
 
       x : identifica a variavel x;
-      (?: \\^ (?: \\(? (\\d+) (?: \\/ (\\d+) \\) )? )? )? : identifica se há um a notação de expoente(^) seguido
-      de abre parenteses, com o digito(numerador) lá dentro e, caso haja uma divisão também capturo o 
+      (?: \\^ (?: \\(? (\\d+) (?: \\/ (\\d+) \\) )? )? )? : identifica se há uma notação de expoente(^) seguido
+      de abre parenteses, com o digito(numerador) lá dentro e, caso haja uma divisão, também capturo o 
       denominador, fechando o parenteses no final.
       (?:)? : junta os dois anteriores e digo que eles podem ou não ocorrer
+      
+      Então, eu vou basicamente olhar a entrada e comparar com a Expressão Regular r(). Se a entrada corresponder com r()
+      dizemos que é uma Match. Quem determina todas as Matches é o sregex_iterator pos e com ele eu posso guardar os valores
+      que eu quero, porque eles são, justamente o retorno de sregex_iterator pos.
    */
    std::regex r("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\d+)(?:\\/(\\d+)\\))?)?)?)?");
    std::vector<double>coeficientes;
@@ -57,15 +60,16 @@ void Funcao::get_parametros(std::string input){
    
    // Iterador pos. Serve para salvar as cópias dos valores das Matches. Recebe o inicio e o final da string, além da Expressão regular
    std::sregex_iterator pos(input.cbegin(), input.cend(), r);
-   std::sregex_iterator end; // É um iterador de fim de sequencia. Quando o std::sregex_iterator é incrementado após atingir a ultima Match, pos == end
+   std::sregex_iterator end; // É um iterador de fim de sequencia. Quando o std::sregex_iterator é incrementado após atingir a última Match, pos fica igual end
    
-   // Percorrendo todas as Matches encontradas até não ter mais nenhuma (pos fica igual a end)
+   // Percorrendo todas as Matches encontradas até não ter mais nenhuma
    for( ; pos!=end; pos++)
    {
-      /* pos->str(x) é o retorno da match em std::string e x é o indice que identifica um grupo. A cada pos++ temos as Matches que foram encontradas pelo iterador pos ao ser construido
+      /* pos->str(x) é o retorno de sregex_iterator desreferenciado, o que me da uma std::string dos coeficientes e x é o indice que identifica um grupo. 
+         A cada pos++ temos as Matches que foram encontradas pelo iterador pos ao ser construido.
          Exemplo: -2/3x^(3/8)-5x+x^2+9
          
-         Grupo 0: Match total
+         Grupo 0: Match
          Grupo 1: Numerador do coeficiente
          Grupo 2: Denominador do coeficiente
          Grupo 3: Numerador do expoente
@@ -78,7 +82,7 @@ void Funcao::get_parametros(std::string input){
       */
       
       //  == COEFICIENTES ==
-      // Se no retorno de uma Match que tem o Grupo 1 estiver vazio(não armazenou nenhum valor do grupo) OU o valor armazenado não é um numero (sinal de + ou -)  
+      // Se no retorno de pos com o Grupo 1 vazio(não armazenou nenhum valor do grupo) OU o valor armazenado não é um numero (sinal de + ou -)  
       if((pos->str(1)).empty() || atof((pos->str(1)).c_str()) == 0)
       {
          // Isso é para os casos onde se tem a entrada de x ou +x ou -x
@@ -86,12 +90,12 @@ void Funcao::get_parametros(std::string input){
       }
       else
       {
-         // Caso seja um retorno numérico, armazena esse valor. (Numerador / 1) ou (Numerador / Denominador)
+         // Caso seja um retorno numérico, armazena esse valor: (Numerador / 1) ou (Numerador / Denominador)
          coeficientes.push_back(atof( (pos->str(1)).c_str()) / get_denominador(pos->str(2)) );
       }
       
       // == EXPOENTES ==
-      // Mesma coisa do anterior só que com o grupo 3. Isso é para os casos onde o expoente é 1 ou 0
+      // Se no retorno de pos com o Grupo 3 vazio. Isso é para os casos onde o expoente é 1 ou 0
       if((pos->str(3)).empty())
       {
          // Se eu não encontrei um caracter 'x' na string da Match atual 
@@ -105,7 +109,7 @@ void Funcao::get_parametros(std::string input){
       }
       else
       {
-         // Caso seja um retorno numérico, armazena esse valor. (Numerador / 1) ou (Numerador / Denominador)
+         // Caso seja um retorno numérico, armazena esse valor: (Numerador / 1) ou (Numerador / Denominador)
          expoentes.push_back(atof( (pos->str(3)).c_str()) / get_denominador( pos->str(4) ) );
       }
    }
