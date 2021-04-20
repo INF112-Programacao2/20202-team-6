@@ -18,6 +18,9 @@ protected:
 
 private:
    void get_parametros(std::string input); // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
+   double retorna_derivada(double x0);
+   std::vector<double> salva_inversao_sinal();
+   std::vector<double> metodo_newton(std::vector<double> valores_elegiveis);
 
 public:
    Funcao(std::string input); // Carrega a string _input e chama o método get_parametros.
@@ -32,5 +35,8 @@ public:
 
 int sign(std::string t);
 double get_denominador(std::string t);
+
+
+
 
 #endif

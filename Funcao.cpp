@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <regex>
+#include <math.h>
 
 #include "Funcao.h"
 
@@ -125,13 +126,13 @@ void Funcao::get_parametros(std::string input){
    static int I = 1;
    std::cout << "\nFUNCAO " << I++ << "\n"; 
 
-   for(int i = 0; i < coeficientes.size(); i++)
+   for(int i = 0; i < _coeficientes.size(); i++)
    {
       std::cout << "\ncoeficientes: " << _coeficientes[i] << "\n";
       std::cout << "expoentes: " << _expoentes[i] << "\n";
    }
 
-   std::cout << "======================================\n";
+   
 }
 
 
@@ -160,20 +161,118 @@ void Funcao::get_imagem(){
 // Escreve as raizes no terminal e carrega o vector _raizes .
 void Funcao::get_raizes(){
    std::vector<double> raizes;
+   std::vector<double> valores_elegiveis;
 
-   //...
+
+   valores_elegiveis = salva_inversao_sinal();
+	raizes = metodo_newton(valores_elegiveis);
+
 
    //std::cout << raizes << std::endl;
    _raizes = raizes;
+
+   // TIRAR ESSES PRINTS DAS RAIZES DEPOIS
+   static int II = 1;
+   std::cout << "\nFUNCAO " << II++ << "\n"; 
+
+   for(int i = 0; i <_raizes.size(); i++)
+   {
+      std::cout << "\nraizes: " << _raizes[i] << "\n";
+   }
+
+   std::cout << "======================================\n";
 } 
+
+
+// Retorna a derivada númerica de uma função
+double Funcao::retorna_derivada(double x0)
+{
+	//metodo das secantes
+
+	double valor_derivada=0;
+	double h = 0.0001;
+
+
+    double fmais = retorna_valor(x0 + h); 
+    double fmenos = retorna_valor(x0 - h);
+
+    valor_derivada = (fmais - fmenos)/(2.*h);
+
+    return valor_derivada;
+}
+
+// Retorna um vetor com os valores de x0 limitrofes a troca de sinal, ou seja, as possíveis raizes da função dada
+std::vector<double> Funcao::salva_inversao_sinal()
+{
+	std::vector<double> _elegiveis;
+
+
+	for(double i=-100;i<=100;i+=0.1)
+	{
+		double x0 = i-0.1;
+		double x1 = i;
+
+		double valor_a = retorna_valor(x0);
+		double valor_b = retorna_valor(x1);
+
+		if((valor_a <= 0 && valor_b >= 0) || (valor_a >= 0 && valor_b <= 0))
+			_elegiveis.push_back(x0);
+
+	}
+
+	return _elegiveis;
+}
+
+// Retorna um vetor com as raizes da função dada
+std::vector<double> Funcao::metodo_newton(std::vector<double> valores_elegiveis)
+{
+	std::vector<double> raizes;
+
+
+	//para mais https://stackoverflow.com/questions/39224270/newtons-method-in-c
+
+
+	// Define a tolerancia para a aproximação das raizes e o erro inicial
+	double tolerancia = 1e-12;
+	double error = tolerancia + 1; 
+	int ciclo_atual = 0;
+	int max_ciclos = 100;
+
+	// Variavel que guarda o valor já aproximado da raiz
+	double raiz=0;
+
+	// Faz a testagem para todos os valores que se mostram elegiveis
+	for(int i=0;i<valores_elegiveis.size();i++)
+	{
+		double x = valores_elegiveis[i];
+		error = tolerancia + 1;
+
+		while (error > tolerancia && ciclo_atual < max_ciclos)
+		{
+			//metodo de newton
+		    raiz = x - (retorna_valor(x) / retorna_derivada(x));
+		    error = fabs(raiz - x);
+		    x = raiz;
+		    ciclo_atual++;
+		}
+
+		if (error <= tolerancia)
+		{
+		    raizes.push_back(raiz);
+		}
+	}
+
+	return raizes;
+}
 
 
 // Retorna o valor da função aplicada no ponto.
 double Funcao::retorna_valor(double ponto){
-   double fx0;
+   double valor_fx=0;
 
-   //...
+	for(int i=0;i<_expoentes.size();i++)
+		valor_fx += _coeficientes[i]*pow(ponto,_expoentes[i]);
 
-   return fx0;
+	return valor_fx;
 } 
 
