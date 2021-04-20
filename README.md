@@ -1,5 +1,5 @@
 <a>
-    <img src="https://fisiologiadeinsetosufv.files.wordpress.com/2017/08/novo-brasao-ufv.png" alt="UFV logo" title="UFV" align="right" height="40" />
+    <img src="https://fisiologiadeinsetosufv.files.wordpress.com/2017/08/novo-brasao-ufv.png" alt="UFV logo" title="UFV" align="right" height="50" />
 </a>
 
 
@@ -9,7 +9,7 @@
 <h2 align = "center"> Uma aplicação para ajudar alunos de Cálculo I </h2>
 
 
-## Indice
+## Índice
 
 - [Funções](#Funções)
 - [Instalação](#Instalação)
@@ -23,8 +23,8 @@
 
 ## Funções
 - Determinar domínio e imagem da função 
-- Determinar as raizes da função
-- Determinar <code> f(x0) </code> dado <code> x0 </code>
+- Determinar as raízes da função
+- Determinar <code> f(x0)</code> dado <code> x0 </code>
 - Determinar derivada e integral da função
 - Esboçar gráficos
 
@@ -40,8 +40,8 @@
 ### ✔️ Posso colocar qualquer tipo de função?
 Por enquato a entrada está limitada a somente com _polinômios_, mas estamos trabalhando para adicionar outros tipos de funções!
 
-### ✔️ Como calcula a derivada númerica?
-Ultilizamos o método das diferenças finitas:  
+### ✔️ Como calcula a derivada numérica?
+Utilizamos o método das diferenças finitas:  
 
 <img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/b23307e0a166752a67f83d9089a84fc476df8cb8" class="mwe-math-fallback-image-inline" aria-hidden="true" style="vertical-align: -2.005ex; width:29.76ex; height:5.843ex;" alt="f'(x)\simeq {f(x+h)-f(x-h) \over 2h}.">
 
