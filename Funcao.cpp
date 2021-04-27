@@ -13,51 +13,52 @@ Funcao::Funcao(std::string input) {
 }
 
 // Retorna o sinal de um coeficiente
-int sign(std::string t)
+int sign(std::string str)
 {
-   if(t[0] == '-')
+   if(str.find('0') != std::string::npos)
+      return 0;
+    
+   if(str.find('-') != std::string::npos)
       return -1;
         
    return 1;
 }
 
-// Retorna o denominador de um coeficiente ou expoente
-double get_denominador(std::string t)
+// Retorna o denominador de um coeficiente ou expoente a/b
+double get_denominador(std::string str)
 {
-   if(atof(t.c_str()) != 0)
-      return atof(t.c_str());
-    
+   if(atof(str.c_str()) != 0)
+      return atof(str.c_str());
+   
    return 1;
 }
 
+// Função que remove um caractere da string (Caso o input haver espaços).
+void c_remove(std::string &str, char char_to_remove)
+{
+   int i = 0;
+   std::string new_str;
+
+   while(str[i])
+   {
+      if(str[i] != char_to_remove)
+      {
+         new_str.push_back(str[i]);
+      }
+      
+      i++;
+   }
+   str = new_str;
+}
 
 // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
 void Funcao::get_parametros(std::string input){
-   /*
-      Explicando a expressão regular:
 
-      ( [+-]? \\d* (?: \\/ (\\d+) )? )
-
-      [+-]? : identifica o sinal de + ou - ou nenhum sinal;
-      \\d*  : identifica o coeficiente que possui nenhum ou mais digitos (Numerador);
-      (?: \\/ (\\d+) )? : identifica se existe uma divisão com o digito anterior(Numerador) e captura o denominador;
-      ()    : Captura tudo
-
-      (?: x (?: \\^ (?: \\(? (\\d+) (?: \\/ (\\d+) \\) )? )? )? )?      
-
-      x : identifica a variavel x;
-      (?: \\^ (?: \\(? (\\d+) (?: \\/ (\\d+) \\) )? )? )? : identifica se há uma notação de expoente(^) seguido
-      de abre parenteses, com o digito(numerador) lá dentro e, caso haja uma divisão, também capturo o 
-      denominador, fechando o parenteses no final.
-      (?:)? : junta os dois anteriores e digo que eles podem ou não ocorrer
-      
-      Então, eu vou basicamente olhar a entrada e comparar com a Expressão Regular r(). Se a entrada corresponder com r()
-      dizemos que é uma Match. Quem determina todas as Matches é o sregex_iterator pos e com ele eu posso guardar os valores
-      que eu quero, porque eles são, justamente o retorno de sregex_iterator pos.
-   */
-   std::regex r("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\d+)(?:\\/(\\d+)\\))?)?)?)?");
+   // Expressão Regular
+   std::regex r("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\-?\\d+)(?:\\/(\\d+)\\))?)?)?)?");
    std::vector<double>coeficientes;
    std::vector<double>expoentes;
+   c_remove(input, ' ');
    
    // Iterador pos. Serve para salvar as cópias dos valores das Matches. Recebe o inicio e o final da string, além da Expressão regular
    std::sregex_iterator pos(input.cbegin(), input.cend(), r);
@@ -66,22 +67,6 @@ void Funcao::get_parametros(std::string input){
    // Percorrendo todas as Matches encontradas até não ter mais nenhuma
    for( ; pos!=end; pos++)
    {
-      /* pos->str(x) é o retorno de sregex_iterator desreferenciado, o que me da uma std::string dos coeficientes e x é o indice que identifica um grupo. 
-         A cada pos++ temos as Matches que foram encontradas pelo iterador pos ao ser construido.
-         Exemplo: -2/3x^(3/8)-5x+x^2+9
-         
-         Grupo 0: Match
-         Grupo 1: Numerador do coeficiente
-         Grupo 2: Denominador do coeficiente
-         Grupo 3: Numerador do expoente
-         Grupo 4: Denominador do expoente
-         
-         Match 1: -2/3x^(3/8)   Grupo 1 / Grupo 2: -0.666667;   Grupo 3 / Grupo 4: 0.375
-         Match 2: -5x           Grupo 1: -5;                    Grupo 3: 1
-         Match 3: +x^2          Grupo 1: 1;                     Grupo 3: 2
-         Match 4: +9            Grupo 1: 9;                     Grupo 3: 0
-      */
-      
       //  == COEFICIENTES ==
       // Se no retorno de pos com o Grupo 1 vazio(não armazenou nenhum valor do grupo) OU o valor armazenado não é um numero (sinal de + ou -)  
       if((pos->str(1)).empty() || atof((pos->str(1)).c_str()) == 0)
@@ -131,8 +116,6 @@ void Funcao::get_parametros(std::string input){
       std::cout << "\ncoeficientes: " << _coeficientes[i] << "\n";
       std::cout << "expoentes: " << _expoentes[i] << "\n";
    }
-
-   
 }
 
 
@@ -274,5 +257,4 @@ double Funcao::retorna_valor(double ponto){
 		valor_fx += _coeficientes[i]*pow(ponto,_expoentes[i]);
 
 	return valor_fx;
-} 
-
+}

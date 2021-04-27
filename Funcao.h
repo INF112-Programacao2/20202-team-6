@@ -33,10 +33,9 @@ public:
    double retorna_valor(double ponto); // Retorna o valor da função aplicada no ponto.
 };
 
-int sign(std::string t);
-double get_denominador(std::string t);
-
-
-
+// Funções auxiliares de get_parametro()
+int sign(std::string str);
+double get_denominador(std::string str);
+void c_remove(std::string &str, char char_to_remove);
 
 #endif
