@@ -36,6 +36,12 @@
 
 ## FAQ
 ### ✔️ Como devo escrever minha função?
+No momento, esperamos funções _polinômiais_. Então:
+- <img src = "https://en.wikipedia.org/api/rest_v1/media/math/render/svg/869e366caf596564de4de06cb0ba124056d4064b" ><code> Ax</code> indica um monômio
+- Para elevar expoentes utilize <code> ^</code>.                       Ex: _3x^2_
+- Coeficientes podem ser do tipo <code> A</code> ou <code> A/B</code>. Ex: _5x_ ou _5/9x_
+- Expoentes podem ser do tipo <code> C</code> ou <code> (C/D)</code>.  Ex: _x^5_ ou _x^(5/9)_
+- Exemplo de entrada: _2/3x^3 - 12x^(6/3) + 2x - 81/2_.
 
 ### ✔️ Posso colocar qualquer tipo de função?
 Por enquato a entrada está limitada a somente com _polinômios_, mas estamos trabalhando para adicionar outros tipos de funções!
