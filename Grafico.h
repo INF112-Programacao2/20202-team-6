@@ -11,10 +11,12 @@
 
 class gnuplot {
 protected:
+   FILE *gnuplotpipe;
 
 public:
    gnuplot(); 
-   //~gnuplot();
+   ~gnuplot();
+   void operator() (const std::string & command); // Functor que pega os comandos do gnuplot.
 };
 
 class Grafico : public gnuplot {
@@ -23,6 +25,7 @@ private:
 public:
    Grafico(); 
    //~Grafico();
+
 };
 
 #endif

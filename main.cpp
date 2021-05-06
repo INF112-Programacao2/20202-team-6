@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "Funcao.h"
+#include "Grafico.h"
 #include "Calculo_Numerico.h"
 #include "Calculo_Analitico.h"
 
@@ -42,6 +43,9 @@ int main(){
    double i_F3_ab  = f3.retorna_valor("integral", -5., 5.);
 
    // Faltou os Gráficos.
+   // Testando Classe gnuplot
+   gnuplot g;  // Construindo o objeto
+   g("plot x**2"); // Functor
 
    return 0;
 }
