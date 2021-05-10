@@ -5,9 +5,6 @@
 #include <string>
 #include <vector>
 
-#include "Funcao.h"
-#include "Calculo_Numerico.h"
-#include "Calculo_Analitico.h"
 
 class gnuplot {
 protected:

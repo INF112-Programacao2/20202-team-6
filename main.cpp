@@ -44,7 +44,7 @@ int main(){
 
    // Faltou os Gráficos.
    // Testando Classe gnuplot
-   gnuplot g;  // Construindo o objeto
+   Grafico g;  // Construindo o objeto
    g("plot x**2"); // Functor
 
    return 0;
