@@ -5,6 +5,7 @@
 #include <math.h>
 
 #include "Funcao.h"
+#include "Grafico.h"
 
 // Carrega a string _input e chama o método get_parametros.
 Funcao::Funcao(std::string input) {
@@ -13,7 +14,7 @@ Funcao::Funcao(std::string input) {
 }
 
 // Retorna o sinal de um coeficiente
-int sign(std::string str)
+int Funcao::sign(std::string str)
 {
    if(str.find('0') != std::string::npos)
       return 0;
@@ -25,7 +26,7 @@ int sign(std::string str)
 }
 
 // Retorna o denominador de um coeficiente ou expoente a/b
-double get_denominador(std::string str)
+double Funcao::get_denominador(std::string str)
 {
    if(atof(str.c_str()) != 0)
       return atof(str.c_str());
@@ -34,7 +35,7 @@ double get_denominador(std::string str)
 }
 
 // Função que remove um caractere da string (Caso o input haver espaços).
-void c_remove(std::string &str, char char_to_remove)
+void Funcao::c_remove(std::string &str, char char_to_remove)
 {
    int i = 0;
    std::string new_str;
@@ -258,3 +259,41 @@ double Funcao::retorna_valor(double ponto){
 
 	return valor_fx;
 }
+
+
+
+//================ Grafico ===================
+
+void Funcao::plot(){
+   std::vector<double> coef = _coeficientes;
+   std::vector<double> exp = _expoentes;
+   Grafico::pl(coef, exp)
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

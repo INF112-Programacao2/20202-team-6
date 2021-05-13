@@ -28,3 +28,16 @@ void gnuplot::operator() (const std::string & command){
 Grafico::Grafico() {
 
 }
+
+void Grafico::pl(std::vector<double> coef, std::vector<double> exp){
+
+   std::cout << "-----------------------" << std::endl;
+   std::cout << coef << std::endl;
+   std::cout << exp << std::endl;
+   std::cout << "-----------------------" << std::endl;
+
+
+}
+
+
+

@@ -22,6 +22,11 @@ private:
    std::vector<double> salva_inversao_sinal();
    std::vector<double> metodo_newton(std::vector<double> valores_elegiveis);
 
+   // Funções auxiliares de get_parametro()
+   int sign(std::string str);
+   double get_denominador(std::string str);
+   void c_remove(std::string &str, char char_to_remove);
+
 public:
    Funcao(std::string input); // Carrega a string _input e chama o método get_parametros.
    //~Funcao();
@@ -31,11 +36,8 @@ public:
    void get_raizes();  // Escreve as raizes no terminal e carrega o vector _raizes .
 
    double retorna_valor(double ponto); // Retorna o valor da função aplicada no ponto.
-};
 
-// Funções auxiliares de get_parametro()
-int sign(std::string str);
-double get_denominador(std::string str);
-void c_remove(std::string &str, char char_to_remove);
+   void plot(); // Chama o gráfico
+};
 
 #endif

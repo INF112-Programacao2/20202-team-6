@@ -42,10 +42,5 @@ int main(){
    double i_F3_x0  = f3.retorna_valor("integral", 5.);
    double i_F3_ab  = f3.retorna_valor("integral", -5., 5.);
 
-   // Faltou os Gráficos.
-   // Testando Classe gnuplot
-   Grafico g;  // Construindo o objeto
-   g("plot x**2"); // Functor
-
    return 0;
 }

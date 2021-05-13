@@ -23,6 +23,8 @@ public:
    Grafico(); 
    //~Grafico();
 
+   void pl(std::vector<double> coef, std::vector<double> exp);
+
 };
 
 #endif
