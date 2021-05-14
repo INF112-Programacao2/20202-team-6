@@ -188,7 +188,7 @@ void Funcao::get_dominio(){
          if(_coeficientes[i]<0){
             dominio=("{x e R / x<0}");
          }
-      break;
+      	break;
       }
    }*/
 
