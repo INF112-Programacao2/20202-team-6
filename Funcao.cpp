@@ -1,9 +1,3 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <regex>
-#include <math.h>
-
 #include "Funcao.h"
 #include "Grafico.h"
 
@@ -28,6 +22,14 @@ int Funcao::sign(std::string str)
 // Retorna o denominador de um coeficiente ou expoente a/b
 double Funcao::get_denominador(std::string str)
 {
+   try{
+      if(str == "0")
+         throw std::domain_error("<Coeficiente invalido> Divisao por 0 indeterminada.");
+   }catch(std::domain_error &e){
+      std::cerr << e.what() << std::endl;
+      exit(1);
+   }
+
    if(atof(str.c_str()) != 0)
       return atof(str.c_str());
    
@@ -52,65 +54,102 @@ void Funcao::c_remove(std::string &str, char char_to_remove)
    str = new_str;
 }
 
+// Funcão que determina o tipo da função de entrada
+std::regex Funcao::get_tipo(std::string input)
+{
+   // Expressões Regulares
+   std::regex polinomio_rgx("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:(\\d+))?)?)?");
+   //std::regex raizN_esima_rgx("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\-?\\d+)(?:\\/(\\d+)\\))?)?)?)?");
+   
+   // Iterador pos. Serve para salvar as cópias dos valores das Matches. Recebe o inicio e o final da string, além da Expressão regular
+   std::sregex_iterator pos(input.cbegin(), input.cend(), polinomio_rgx);
+   std::sregex_iterator end; // É um iterador de fim de sequencia. Quando o std::sregex_iterator é incrementado após atingir a última Match, 'pos' fica igual 'end'
+
+   // Tipo polinomio
+   for( ; pos!=end; pos++){
+      try{
+         if(pos->str(0).empty() && pos->position() != input.length())
+            throw std::runtime_error("<Entrada invalida> Nao e um polinomio.\nEntrada: ");
+      }catch(std::runtime_error &e){
+         std::cerr << e.what() << input << std::endl;
+         exit(1);
+      }
+   }
+
+   // Por enquanto só retorna o tipo polinomio
+   this->_tipo = 'p'; // polinomio
+   return polinomio_rgx;
+}
+
 // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
 void Funcao::get_parametros(std::string input){
 
-   // Expressão Regular
-   std::regex r("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\-?\\d+)(?:\\/(\\d+)\\))?)?)?)?");
+   std::regex r;
    std::vector<double>coeficientes;
    std::vector<double>expoentes;
    c_remove(input, ' ');
    
-   // Iterador pos. Serve para salvar as cópias dos valores das Matches. Recebe o inicio e o final da string, além da Expressão regular
-   std::sregex_iterator pos(input.cbegin(), input.cend(), r);
-   std::sregex_iterator end; // É um iterador de fim de sequencia. Quando o std::sregex_iterator é incrementado após atingir a última Match, pos fica igual end
-   
-   // Percorrendo todas as Matches encontradas até não ter mais nenhuma
-   for( ; pos!=end; pos++)
+   // r() é a regex do tipo da função de entrada 
+   r.assign( get_tipo(input) );
+
+   // Por enquanto só tem o caso polinomio
+   switch (this->_tipo)
    {
-      //  == COEFICIENTES ==
-      // Se no retorno de pos com o Grupo 1 vazio(não armazenou nenhum valor do grupo) OU o valor armazenado não é um numero (sinal de + ou -)  
-      if((pos->str(1)).empty() || atof((pos->str(1)).c_str()) == 0)
+      case 'p':
       {
-         // Isso é para os casos onde se tem a entrada de x ou +x ou -x
-         coeficientes.push_back(1 * sign(pos->str(1))); // Multiplica um pelo sinal do coeficiente
-      }
-      else
-      {
-         // Caso seja um retorno numérico, armazena esse valor: (Numerador / 1) ou (Numerador / Denominador)
-         coeficientes.push_back(atof( (pos->str(1)).c_str()) / get_denominador(pos->str(2)) );
-      }
-      
-      // == EXPOENTES ==
-      // Se no retorno de pos com o Grupo 3 vazio. Isso é para os casos onde o expoente é 1 ou 0
-      if((pos->str(3)).empty())
-      {
-         // Se eu não encontrei um caracter 'x' na string da Match atual 
-         if ((pos->str(0)).find('x') == std::string::npos)
+         std::sregex_iterator pos(input.cbegin(), input.cend(), r, std::regex_constants::match_not_null);
+         std::sregex_iterator end;
+
+         // Percorrendo todas as Matches encontradas até não ter mais nenhuma
+         for( ; pos!=end; pos++)
          {
-            expoentes.push_back(0);
-            continue;
+            //  == COEFICIENTES ==
+            // Se no retorno de pos com o Grupo 1 vazio(não armazenou nenhum valor do grupo) OU o valor armazenado não é um numero (sinal de + ou -)  
+            if((pos->str(1)).empty() || (pos->str(1)).compare("+")==0 || (pos->str(1)).compare("-")==0)
+            {
+               // Isso é para os casos onde se tem a entrada de x ou +x ou -x
+               coeficientes.push_back(1 * sign(pos->str(1))); // Multiplica um pelo sinal do coeficiente
+            }else
+            {
+               // Caso seja um retorno numérico, armazena esse valor: (Numerador / 1) ou (Numerador / Denominador)
+               coeficientes.push_back(atof( (pos->str(1)).c_str()) / get_denominador(pos->str(2)) );
+            }
+            
+            // == EXPOENTES ==
+            // Se no retorno de pos com o Grupo 3 vazio. Isso é para os casos onde o expoente é 1 ou 0
+            if((pos->str(3)).empty())
+            {
+               // Se eu não encontrei um caracter 'x' na string da Match atual 
+               if ((pos->str(0)).find('x') == std::string::npos)
+               {
+                  expoentes.push_back(0);
+                  continue;
+               }
+               // Encontrei o x, logo, armazeno 1
+               expoentes.push_back(1);
+            }
+            else
+            {
+               // Caso seja um retorno numérico, armazena esse valor: (Numerador / 1) ou (Numerador / Denominador)
+               expoentes.push_back(atof( (pos->str(3)).c_str()) / get_denominador( pos->str(4) ) ); // get_denominador( pos->str(4) ) fica sempre vazio para polinomios
+            }
          }
-         // Encontrei o x, logo, armazeno 1
-         expoentes.push_back(1);
-      }
-      else
-      {
-         // Caso seja um retorno numérico, armazena esse valor: (Numerador / 1) ou (Numerador / Denominador)
-         expoentes.push_back(atof( (pos->str(3)).c_str()) / get_denominador( pos->str(4) ) );
-      }
-   }
+
+      }break;
    
-   // Por causa do jeito que eu escrevi a Expressão Regular r() Ta sempre ocorrendo uma Match vazia. Ai eu só to tirando ela do vetor
-   coeficientes.pop_back();
-   expoentes.pop_back();
+   default:
+      break;
+   }
    
    _coeficientes = coeficientes;
    _expoentes = expoentes;
 
-   // TIRAR ESSES PRINTS DOS EXPOENTES E DOS COEFICIENTES DEPOIS
+   // TIRAR ESSES PRINTS DOS EXPOENTES, COEFICIENTES E TIPO DEPOIS
    static int I = 1;
-   std::cout << "\nFUNCAO " << I++ << "\n"; 
+   if(this->_tipo == 'p'){
+      std::cout << "\n<Funcao Polinomial> ";
+   }else std::cout << "\nFUNÇÃO ";
+   std::cout << I++ << "\n"; 
 
    for(int i = 0; i < _coeficientes.size(); i++)
    {
@@ -118,7 +157,6 @@ void Funcao::get_parametros(std::string input){
       std::cout << "expoentes: " << _expoentes[i] << "\n";
    }
 }
-
 
 // Escreve o dominio no terminal e carrega a string _dominio.
 void Funcao::get_dominio(){

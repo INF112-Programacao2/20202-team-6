@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <regex>
+#include <math.h>
 
 class Funcao {
 protected:
@@ -14,10 +16,11 @@ protected:
    std::string _dominio;
    std::string _imagem;
 
-   std::string _tipo; // Por hora sem método: _tipo = "Polinomio".
+   char _tipo; // Por hora sem método: _tipo = "Polinomio".
 
 private:
    void get_parametros(std::string input); // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
+   std::regex get_tipo(std::string input); // Funcão que determina o tipo da função de entrada
    double retorna_derivada(double x0);
    std::vector<double> salva_inversao_sinal();
    std::vector<double> metodo_newton(std::vector<double> valores_elegiveis);
