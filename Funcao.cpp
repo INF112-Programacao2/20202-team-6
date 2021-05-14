@@ -162,12 +162,39 @@ void Funcao::get_parametros(std::string input){
 void Funcao::get_dominio(){
    std::string dominio;
 
-   //...
+   //'e' indica pertence à e 'R' numeros reais(como e' polinomio x sempre pertence a R);
+   dominio=("{x e R}");
 
-   //std::cout << dominio << std::endl;
+   //criei esse for para testar o expoente com raiz quadrada(x^(y/2)) e verificar seu dominio, so funciona para raiz quadrada no momento
+   /*
+   for(int i=0; i<_coeficientes.size(); i++){
+
+      int ver[i]; //vetor verifica
+      ver[i]=(_expoentes[i]/0.5);
+
+      if(ver[i]%2==1){
+         if(_coeficientes[i]>0){             //coeficiente (ax)^(y/2) por exemplo
+            dominio=("{x e R / x>=0}");
+         }
+         if(_coeficientes[i]<0){
+            dominio=("{x e R / x<=0}");
+         }
+         break;
+      }
+      else if(ver[i]%2==-1){
+         if(_coeficientes[i]>0){
+            dominio=("{x e R / x>0}");
+         }
+         if(_coeficientes[i]<0){
+            dominio=("{x e R / x<0}");
+         }
+      break;
+      }
+   }*/
+
+   std::cout << "\ndominio: " << dominio << std::endl;
    _dominio = dominio;
 } 
-
 
 // Escreve a  imagem no terminal e carrega a string _imagem.
 void Funcao::get_imagem(){
