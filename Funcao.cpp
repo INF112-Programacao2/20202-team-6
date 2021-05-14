@@ -267,8 +267,10 @@ double Funcao::retorna_valor(double ponto){
 void Funcao::plot(){
    std::vector<double> coef = _coeficientes;
    std::vector<double> exp = _expoentes;
-   Grafico::pl(coef, exp)
-};
+   std::string para_imprimir  = _input;
+   Grafico g;
+   g.Grafico::pl(coef, exp, para_imprimir);
+}
 
 
 

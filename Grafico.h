@@ -23,7 +23,7 @@ public:
    Grafico(); 
    //~Grafico();
 
-   void pl(std::vector<double> coef, std::vector<double> exp);
+   void pl(std::vector<double> coef, std::vector<double> exp, std::string para_imprimir);
 
 };
 
