@@ -25,14 +25,13 @@ void Calculo_Analitico::get_parametros_derivada_integral(){
    std::vector<double> expoentes_integral; 
 
    //Visto que um valor constante em uma função tenha expoente=0 na saída do terminal, realizei apenas um for com if else para calcular os valores dos coeficientes e expoentes da derivada e integral
-   
    for(int i=0; i<coeficientes.size(); i++){
       
       expoentes_derivada[i]=expoentes[i]-1;  //valor do expoente da derivada
 
       if(expoentes[i]==0){
          coeficientes_derivada[i]=0;    //derivada de uma constante=0;
-         expoentes_derivada[i]=0;  //deixar o expoente derivada=0 da constante igual a saida do terminal, para nao sair negativo
+         expoentes_derivada[i]=1;  //o expoente do coef da constante da derivada sera 1 devido a formula para o calculo da derivada no ponto, pois se o ponto=0, 0^-1 e 0^0=indefinido e 0^1=0
          break;
       }
       else if((expoentes[i])>=1){ 
@@ -89,14 +88,16 @@ double Calculo_Analitico::retorna_valor(std::string parametro, double ponto){
    if(parametro == "derivada"){
       double dfx0;
 
-      //... 
+      for(int i=0; i<_coeficientes.size(); i++)
+         dfx0+=_coeficientes_derivada[i]*(pow(ponto, _expoentes_derivada[i]));
 
       return dfx0;
    }else{
       if(parametro == "integral"){
          double int_f;
 
-         //...
+         for(int i=0; i<_coeficientes.size(); i++)
+            int_f+=_coeficientes_integral[i]*(pow(ponto, _expoentes_integral[i]));
 
          return int_f;
       }else{
