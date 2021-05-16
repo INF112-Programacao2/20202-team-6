@@ -35,7 +35,7 @@ void Calculo_Analitico::get_parametros_derivada_integral(){
          coeficientes_derivada[i]=0;    //derivada de uma constante=0;
          break;
       }
-      else{ 
+      else if((expoentes[i])>=1){ 
          coeficientes_derivada[i]=((pow(coeficientes[i], expoentes[i]))*expoentes[i]); //valor coeficiente da derivada=(a^expoente)*(valor do expoente)
          break;
       }
@@ -50,7 +50,7 @@ void Calculo_Analitico::get_parametros_derivada_integral(){
          break;
       }  
 
-      else{ 
+      else if((expoentes[i])>=1){ 
          coeficientes_integral[i]=((pow(coeficientes[i], expoentes[i]))/expoentes_integral[i]); //valor coeficiente da integral=(a^(expoente))/(expoente+1)
          break;
       }
