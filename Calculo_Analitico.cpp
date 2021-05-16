@@ -25,7 +25,6 @@ void Calculo_Analitico::get_parametros_derivada_integral(){
    std::vector<double> expoentes_integral; 
 
    //Visto que um valor constante em uma função tenha expoente=0 na saída do terminal, realizei apenas um for com if else para calcular os valores dos coeficientes e expoentes da derivada e integral
-   //Ainda nao testei, so escrevi pela logica
    
    for(int i=0; i<coeficientes.size(); i++){
       
@@ -33,10 +32,11 @@ void Calculo_Analitico::get_parametros_derivada_integral(){
 
       if(expoentes[i]==0){
          coeficientes_derivada[i]=0;    //derivada de uma constante=0;
+         expoentes_derivada[i]=0;  //deixar o expoente derivada=0 da constante igual a saida do terminal, para nao sair negativo
          break;
       }
       else if((expoentes[i])>=1){ 
-         coeficientes_derivada[i]=((pow(coeficientes[i], expoentes[i]))*expoentes[i]); //valor coeficiente da derivada=(a^expoente)*(valor do expoente)
+         coeficientes_derivada[i]=expoentes[i]*coeficientes[i]; //valor coeficiente da derivada=(valor do expoente)*(a)
          break;
       }
    }
@@ -46,12 +46,12 @@ void Calculo_Analitico::get_parametros_derivada_integral(){
       expoentes_integral[i]=expoentes[i]+1;  //valor expoente da integral
 
       if(expoentes[i]==0){ 
-         coeficientes_integral[i]=coeficientes[i]; //integral de uma constante=ela mesma
+         coeficientes_integral[i]=coeficientes[i]; //integral de uma constante=ela mesma (ex: integral de 2=2x)
          break;
       }  
 
       else if((expoentes[i])>=1){ 
-         coeficientes_integral[i]=((pow(coeficientes[i], expoentes[i]))/expoentes_integral[i]); //valor coeficiente da integral=(a^(expoente))/(expoente+1)
+         coeficientes_integral[i]=coeficientes[i]/expoentes_integral[i]; //valor coeficiente da integral=(a)/(expoente+1)
          break;
       }
    }
