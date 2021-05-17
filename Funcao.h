@@ -6,6 +6,7 @@
 #include <vector>
 #include <regex>
 #include <math.h>
+#include <algorithm>
 
 class Funcao {
 protected:
@@ -13,17 +14,24 @@ protected:
    std::vector<double> _coeficientes;
    std::vector<double> _expoentes;
    std::vector<double> _raizes;
+   std::vector<double> _imagem;
    std::string _dominio;
-   std::string _imagem;
+
 
    char _tipo; // Por hora sem método: _tipo = "Polinomio".
 
 private:
    void get_parametros(std::string input); // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
    std::regex get_tipo(std::string input); // Funcão que determina o tipo da função de entrada
+
+   // Funções auxiliares de get_raiz() e get_imagem()
    double retorna_derivada(double x0);
    std::vector<double> salva_inversao_sinal();
    std::vector<double> metodo_newton(std::vector<double> valores_elegiveis);
+   std::vector<double> pontos_criticos();
+   std::vector<double> retorna_imagem(std::vector<double> elegiveis);
+   bool nearlyEqual(double a, double b);
+   void compara_vetor(std::vector<double> &vetor);
 
    // Funções auxiliares de get_parametro()
    int sign(std::string str);
