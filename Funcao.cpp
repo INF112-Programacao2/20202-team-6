@@ -189,6 +189,8 @@ std::vector<double> Funcao::retorna_imagem(std::vector<double> elegiveis)
 {
     std::vector<double> imagem;
 
+    if(elegiveis.size()==0) return imagem;
+
     double maior = elegiveis[0];
     double menor = elegiveis[0];
 
