@@ -10,7 +10,7 @@
 int main(){
    
    // Todos os métodos que podemos usar em um objeto da classe Funcao.
-   Funcao f1("4 x^2 - 3 x");
+   Funcao f1("4 x^(2/2) - 3 x");
    f1.get_dominio();
    f1.get_imagem();
    f1.get_raizes();

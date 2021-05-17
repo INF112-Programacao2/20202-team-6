@@ -63,8 +63,12 @@ void Grafico::pl(std::vector<double> coef, std::vector<double> exp,    std::stri
    remove("arquivo.txt");
 
    gnuplot p;
-   p("set term postscript eps enhanced color");
-   p(output);
+   p("set terminal pngcairo size 350,262 enhanced font \'Verdana,10\' ");
+   p("set output \"output.png\" ");
+
+   //p("set term postscript eps enhanced color");
+   //p("set output \"output.eps\" "); //output
+   
    p("set grid");
    p("set xrange[-5:5]");
    p("set yrange[-30:30]");

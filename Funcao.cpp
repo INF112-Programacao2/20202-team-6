@@ -57,33 +57,40 @@ void Funcao::c_remove(std::string &str, char char_to_remove)
 // Funcão que determina o tipo da função de entrada
 std::regex Funcao::get_tipo(std::string input)
 {
-   // Expressões Regulares
-   std::regex polinomio_rgx("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:(\\d+))?)?)?");
-   //std::regex raizN_esima_rgx("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\-?\\d+)(?:\\/(\\d+)\\))?)?)?)?");
+   // Expressão Regular
+   std::regex rgx("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\-?\\d+)(?:\\/(\\d+)\\))?)?)?)?");
    
    // Iterador pos. Serve para salvar as cópias dos valores das Matches. Recebe o inicio e o final da string, além da Expressão regular
-   std::sregex_iterator pos(input.cbegin(), input.cend(), polinomio_rgx);
-   std::sregex_iterator end; // É um iterador de fim de sequencia. Quando o std::sregex_iterator é incrementado após atingir a última Match, 'pos' fica igual 'end'
+   std::sregex_iterator group(input.cbegin(), input.cend(), rgx);
+   // É um iterador de fim de sequencia. Quando o std::sregex_iterator é incrementado após atingir a última Match, 'pos' fica igual 'end
+   std::sregex_iterator end;
+   
+   // Define o tipo da função como Polinomio inicialmente
+   this->_tipo = "Polinomio";
 
-   // Tipo polinomio
-   for( ; pos!=end; pos++){
+   // Verificando se a função de entrada é válida
+   for( ; group!=end; group++){
+      
+      // Define a função como raiz n-ésima / racional
+      if( (group->str(3)).find("-")!=std::string::npos || (group->str(0)).find("/")!= std::string::npos) 
+         this->_tipo = "Raiz n-esima/racional";
+
       try{
-         if(pos->str(0).empty() && pos->position() != input.length())
-            throw std::runtime_error("<Entrada invalida> Nao e um polinomio.\nEntrada: ");
-      }catch(std::runtime_error &e){
+         if(group->str(0).empty() && group->position() != input.length())
+            throw std::invalid_argument("<Entrada invalida> Nao e um Polinomio ou Raiz n-esima ou racional.\nEntrada: ");
+      }catch(std::invalid_argument &e){
          std::cerr << e.what() << input << std::endl;
          exit(1);
       }
    }
-
-   // Por enquanto só retorna o tipo polinomio
-   this->_tipo = 'p'; // polinomio
-   return polinomio_rgx;
+   
+   return rgx;
 }
 
 // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
 void Funcao::get_parametros(std::string input){
 
+   double c, e;
    std::regex r;
    std::vector<double>coeficientes;
    std::vector<double>expoentes;
@@ -92,64 +99,42 @@ void Funcao::get_parametros(std::string input){
    // r() é a regex do tipo da função de entrada 
    r.assign( get_tipo(input) );
 
-   // Por enquanto só tem o caso polinomio
-   switch (this->_tipo)
+   std::sregex_iterator group(input.cbegin(), input.cend(), r);
+   std::sregex_iterator end;
+
+   // == COLETANDO OS DADOS DE UM POLINÔMIO ==
+   // Percorrendo todas as Matches encontradas até não ter mais nenhuma
+   for( ; group!=end; group++)
    {
-      case 'p':
-      {
-         std::sregex_iterator pos(input.cbegin(), input.cend(), r, std::regex_constants::match_not_null);
-         std::sregex_iterator end;
-
-         // Percorrendo todas as Matches encontradas até não ter mais nenhuma
-         for( ; pos!=end; pos++)
-         {
-            //  == COEFICIENTES ==
-            // Se no retorno de pos com o Grupo 1 vazio(não armazenou nenhum valor do grupo) OU o valor armazenado não é um numero (sinal de + ou -)  
-            if((pos->str(1)).empty() || (pos->str(1)).compare("+")==0 || (pos->str(1)).compare("-")==0)
-            {
-               // Isso é para os casos onde se tem a entrada de x ou +x ou -x
-               coeficientes.push_back(1 * sign(pos->str(1))); // Multiplica um pelo sinal do coeficiente
-            }else
-            {
-               // Caso seja um retorno numérico, armazena esse valor: (Numerador / 1) ou (Numerador / Denominador)
-               coeficientes.push_back(atof( (pos->str(1)).c_str()) / get_denominador(pos->str(2)) );
-            }
-            
-            // == EXPOENTES ==
-            // Se no retorno de pos com o Grupo 3 vazio. Isso é para os casos onde o expoente é 1 ou 0
-            if((pos->str(3)).empty())
-            {
-               // Se eu não encontrei um caracter 'x' na string da Match atual 
-               if ((pos->str(0)).find('x') == std::string::npos)
-               {
-                  expoentes.push_back(0);
-                  continue;
-               }
-               // Encontrei o x, logo, armazeno 1
-               expoentes.push_back(1);
-            }
-            else
-            {
-               // Caso seja um retorno numérico, armazena esse valor: (Numerador / 1) ou (Numerador / Denominador)
-               expoentes.push_back(atof( (pos->str(3)).c_str()) / get_denominador( pos->str(4) ) ); // get_denominador( pos->str(4) ) fica sempre vazio para polinomios
-            }
-         }
-
-      }break;
-   
-   default:
-      break;
+      // Assume o valor inicial dos coeficientes como (sinal) * 1 e para os expoentes 1 (casos x; -x; +x)
+      c = 1 * sign(group->str(1));
+      e = 1;
+      
+      // Checando se o coeficiente é um numero diferente de 1
+      if(  !(group->str(1)).empty()  &&  !(group->str(1)).compare("+")==0  &&  !(group->str(1)).compare("-")==0)
+         c = atof( (group->str(1)).c_str()) / get_denominador(group->str(2));
+      
+      // Checando se o expoente é um numero diferente de 1; caso contrário verifica se não existe a incógnita 'x' (se não existir é porque é 0)
+      if(!(group->str(3)).empty()){
+         e = atof( (group->str(3)).c_str()) / get_denominador( group->str(4) );
+      }else if ( (group->str(0)).find('x') == std::string::npos){
+         e = 0;
+      }
+      
+      // Colocando os coeficientes e expoentes dentro dos vectors
+      coeficientes.push_back(c);
+      expoentes.push_back(e);
    }
-   
+
+   coeficientes.pop_back();
+   expoentes.pop_back();
+
    _coeficientes = coeficientes;
    _expoentes = expoentes;
 
    // TIRAR ESSES PRINTS DOS EXPOENTES, COEFICIENTES E TIPO DEPOIS
    static int I = 1;
-   if(this->_tipo == 'p'){
-      std::cout << "\n<Funcao Polinomial> ";
-   }else std::cout << "\nFUNÇÃO ";
-   std::cout << I++ << "\n"; 
+   std::cout << "\n<Funcao " << I++ << ": " << this->_tipo << ">" << std::endl;
 
    for(int i = 0; i < _coeficientes.size(); i++)
    {
@@ -174,6 +159,7 @@ void Funcao::get_imagem(){
 
    std::vector<double> elegiveis = pontos_criticos();
    std::vector<double> imagem = retorna_imagem(elegiveis);
+
    if(elegiveis.size()==0) std::cout << "A funcao nao eh limitada\n";
    else
    {

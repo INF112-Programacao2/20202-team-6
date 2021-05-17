@@ -10,15 +10,13 @@
 
 class Funcao {
 protected:
-   std::string _input;
    std::vector<double> _coeficientes;
    std::vector<double> _expoentes;
    std::vector<double> _raizes;
    std::vector<double> _imagem;
    std::string _dominio;
-
-
-   char _tipo; // Por hora sem método: _tipo = "Polinomio".
+   std::string _input;
+   std::string _tipo;
 
 private:
    void get_parametros(std::string input); // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
