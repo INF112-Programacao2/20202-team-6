@@ -1,3 +1,4 @@
+#include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -61,8 +62,11 @@ void Calculo_Analitico::get_max_e_min(){
    if(menor >= -3e-10 && menor <= 3e-10) menor = 0;
    if(maior >= -3e-10 && maior <= 3e-10) maior = 0;
    
+        std::ofstream outfile;	
+        outfile.open("RELATORIO.txt",  std::ios::app);
+        outfile << "O maximo: " << maior << " & o minimo: " << menor << std::endl;
+        outfile.close();
 
-   std::cout << "O maximo: " << maior << " & o minimo: " << menor << std::endl;
    _maximo = maior;
    _minimo = menor;
 } 

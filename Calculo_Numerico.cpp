@@ -26,7 +26,7 @@ void Calculo_Numerico::get_max_e_min(double limite_inf, double limite_sup){
    if(maior >= -3e-10 && maior <= 3e-10) maior = 0;
 
 
-   std::cout << "O menor valor local eh: " << std::fixed << menor << "|| O maior valor loca eh" << std::fixed <<  maior << "\n";
+   //std::cout << "O menor valor local eh: " << std::fixed << menor << "|| O maior valor loca eh" << std::fixed <<  maior << "\n";
 
    std::vector<double> max_min = {menor, maior};
    _max_min = max_min;

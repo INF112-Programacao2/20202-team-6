@@ -1,3 +1,6 @@
+#include <fstream>
+#include <iostream>
+
 #include "Funcao.h"
 #include "Grafico.h"
 
@@ -149,15 +152,24 @@ void Funcao::get_dominio(){
 
    //'e' indica 'pertence à' e 'R' numeros reais(como e' polinomio x sempre pertence a R);
    dominio="{x e R}";
-   std::cout << "\n Tipo da Funcao: " <<  this->_tipo  << std::endl;
-   std::cout << "\ndominio: " << dominio << std::endl;
+
+        std::ofstream outfile;	
+        outfile.open("RELATORIO.txt",  std::ios::app);
+        outfile << "\n Tipo da Funcao: " <<  this->_tipo  << std::endl;
+        outfile << "\ndominio: " << dominio << std::endl;
+        outfile.close();
+
+
+
    _dominio = dominio;
 } 
 
 // Escreve a  imagem no terminal e carrega a string _imagem.
 void Funcao::get_imagem(){
 
-   std::cout.precision(3);
+        std::ofstream outfile;	
+        outfile.open("RELATORIO.txt",  std::ios::app);
+        outfile.precision(3);
    double maior = retorna_valor(-1000);
    double menor = retorna_valor(-1000);
    for(double i=-1000;i<1001;i+=0.1)
@@ -173,7 +185,9 @@ void Funcao::get_imagem(){
    if(maior >= -3e-10 && maior <= 3e-10) maior = 0;
 
 
-   std::cout << "\nimagem: {y e R/ " << menor << " <= y <= " << maior << "} \n";
+        outfile << "\nimagem: {y e R/ " << menor << " <= y <= " << maior << "} \n";
+
+        outfile.close();
 
    std::vector<double> imagem = {menor, maior};
    _imagem = imagem;
@@ -199,25 +213,25 @@ double Funcao::condicao_inf_menor(double &menor)
 }
 
 // Escreve as raizes no terminal e carrega o vector _raizes .
-void Funcao::get_raizes()
-{
-	//std::cout.precision(2);
-	std::vector<double> valores_elegiveis;
-	
-	valores_elegiveis = salva_inversao_sinal();
-	if(valores_elegiveis.size()==0) std::cout << "Nao ha raizes\n";
-	else
-	{ 
-		std::vector<double> raizes;
-		raizes = metodo_newton(valores_elegiveis);
-		
-
-		for(int i=0;i<_raizes.size();i++)
-			std::cout << "Raiz " << i << ": " << _raizes[i] << std::endl;
-
-		_raizes = raizes;
-	}
-} 
+//void Funcao::get_raizes()
+//{
+//	//std::cout.precision(2);
+//	std::vector<double> valores_elegiveis;
+//	
+//	valores_elegiveis = salva_inversao_sinal();
+//	if(valores_elegiveis.size()==0) std::cout << "Nao ha raizes\n";
+//	else
+//	{ 
+//		std::vector<double> raizes;
+//		raizes = metodo_newton(valores_elegiveis);
+//		
+//
+//		for(int i=0;i<_raizes.size();i++)
+//			std::cout << "Raiz " << i << ": " << _raizes[i] << std::endl;
+//
+//		_raizes = raizes;
+//	}
+//} 
 
 // Retorna a derivada númerica de uma função
 double Funcao::retorna_derivada(double x0)
