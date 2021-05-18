@@ -169,6 +169,10 @@ void Funcao::get_imagem(){
    condicao_inf_menor(menor);
    condicao_inf_maior(maior);
 
+   if(menor >= -3e-10 && menor <= 3e-10) menor = 0;
+   if(maior >= -3e-10 && maior <= 3e-10) maior = 0;
+
+
    std::cout << "\nimagem: {y e R/ " << menor << " <= y <= " << maior << "} \n";
 
    std::vector<double> imagem = {menor, maior};
