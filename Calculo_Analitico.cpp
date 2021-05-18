@@ -31,10 +31,9 @@ void Calculo_Analitico::get_parametros_derivada_integral(){
       {
          expoentes_derivada.push_back(expoentes[i]-1);
          coeficientes_derivada.push_back(coeficientes[i] * expoentes[i]);
-         
+      }
          expoentes_integral.push_back(expoentes[i]+1);
          coeficientes_integral.push_back(coeficientes[i] / expoentes_integral[i]);
-      }
    }
 
    _coeficientes_derivada = coeficientes_derivada;
@@ -69,7 +68,7 @@ double Calculo_Analitico::retorna_valor(std::string parametro, double ponto){
    if(parametro == "derivada"){
       double dfx0=0;    //inicia =0 para evitar erro no calculo
 
-      for(int i=0; i<_coeficientes.size(); i++)
+      for(int i=0; i<_coeficientes_derivada.size(); i++)
          dfx0+=_coeficientes_derivada[i]*(pow(ponto, _expoentes_derivada[i]));
 
       return dfx0;
@@ -77,7 +76,7 @@ double Calculo_Analitico::retorna_valor(std::string parametro, double ponto){
       if(parametro == "integral"){
          double int_f=0;   //inicia =0 para evitar erro no calculo
 
-         for(int i=0; i<_coeficientes.size(); i++)
+         for(int i=0; i<_coeficientes_integral.size(); i++)
             int_f+=_coeficientes_integral[i]*(pow(ponto, _expoentes_integral[i]));
 
          return int_f;
