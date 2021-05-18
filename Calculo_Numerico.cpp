@@ -31,7 +31,7 @@ double Calculo_Numerico::retorna_valor(std::string derivada, double ponto){
    if(derivada == "derivada"){
       double dfx0;
 
-      double h = 0.0001;
+	   double h = 10e-7;
       double fmais = retorna_valor(ponto + h); 
       double fmenos = retorna_valor(ponto - h);
 
