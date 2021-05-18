@@ -17,7 +17,9 @@ private:
    double _minimo;
 
    void get_parametros_derivada_integral(); // Carrega o vector _coeficientes_derivada, o vector _expoentes_derivada, o vector _coeficientes_integral e o vector _expoentes_integral (Usado no Construtor).
-
+   double condicao_inf_maior(double &maior);
+   double condicao_inf_menor(double &menor);
+   
 public:
     Calculo_Analitico(std::string input);// Carrega a string _input, o vector _coeficientes e o vector _expoentes (Usando o construtor de Funcoes)
     //~Calculo_Analitico();

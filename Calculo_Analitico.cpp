@@ -46,15 +46,44 @@ void Calculo_Analitico::get_parametros_derivada_integral(){
 
 // Escreve os valores máximos e mínimos no terminal e carrega double _maximo e double _minimo.
 void Calculo_Analitico::get_max_e_min(){
-   double maximo;
-   double minimo;
+   std::cout.precision(3);
+   double maior = retorna_valor(-1000);
+   double menor = retorna_valor(-1000);
+   for(double i=-1000;i<1001;i+=0.1)
+   {
+      if(retorna_valor(i)<menor) menor = retorna_valor(i); 
+      if(retorna_valor(i)>maior) maior = retorna_valor(i);
+   }
 
-   //...
+   condicao_inf_menor(menor);
+   condicao_inf_maior(maior);
 
-   //std::cout << maximo << " & " << minimo << std::endl;
-   _maximo = maximo;
-   _minimo = minimo;
+   if(menor >= -3e-10 && menor <= 3e-10) menor = 0;
+   if(maior >= -3e-10 && maior <= 3e-10) maior = 0;
+   
+
+   std::cout << "O maximo: " << maior << " & o minimo: " << menor << std::endl;
+   _maximo = maior;
+   _minimo = menor;
 } 
+
+// Retorna infinito se não há limite superior
+double Calculo_Analitico::condicao_inf_maior(double &maior)
+{
+    if((retorna_valor(-1001) >= maior && retorna_valor(-1000) <= maior) ||
+        ((retorna_valor(1001) >= maior && retorna_valor(1000) <= maior))) {return maior = INFINITY;}
+
+    return maior;
+}
+
+// Retorna infinito se não há limite inferior
+double Calculo_Analitico::condicao_inf_menor(double &menor)
+{
+        if((retorna_valor(-1001) <= menor && retorna_valor(-1000) >= menor) ||
+        ((retorna_valor(1001) <= menor && retorna_valor(1000) >= menor))) {return menor = INFINITY;}
+
+    return menor;
+}
 
 
 // Retorna o valor da função aplicada no ponto.
