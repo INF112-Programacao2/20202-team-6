@@ -64,7 +64,7 @@ void Calculo_Analitico::get_max_e_min(){
    
         std::ofstream outfile;	
         outfile.open("RELATORIO.txt",  std::ios::app);
-        outfile << "O maximo: " << maior << " & o minimo: " << menor << std::endl;
+        outfile << "O minimo: " << menor << " & o maximo: " << maior << "\n";
         outfile.close();
 
    _maximo = maior;

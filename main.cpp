@@ -105,6 +105,7 @@ int main(){
 
         std::ofstream outfile;	
         outfile.open("RELATORIO.txt",  std::ios::app);
+        outfile << "\n*===========f(x) no ponto dado============* " << std::endl;
         outfile << "\nf(" << p1 << ") = " << F1_x1 << std::endl;
         outfile << "\nf(" << p2 << ") = " << F1_x2 << std::endl;
         outfile << "\nf(" << p3 << ") = " << F1_x3 << std::endl;
@@ -161,21 +162,26 @@ int main(){
 
         std::ofstream outfile;	
         outfile.open("RELATORIO.txt",  std::ios::app);
+        outfile << "\n*===========f(x) no ponto dado============* " << std::endl;
         outfile << "\nf(" << p1 << ") = " << F3_x1 << std::endl;
         outfile << "\nf(" << p2 << ") = " << F3_x2 << std::endl;
         outfile << "\nf(" << p3 << ") = " << F3_x3 << std::endl;
+        outfile << "\n*===========f'(x) no ponto dado (analitica)============* " << std::endl;
         outfile << "\nf\'(" << d1 << ") = " << d_F3_x1 << std::endl;
         outfile << "\nf\'(" << d2 << ") = " << d_F3_x2 << std::endl;
         outfile << "\nf\'(" << d3 << ") = " << d_F3_x3 << std::endl;
-        outfile << "\nintegral de f de " << li1 << " até " << ls1 << " = " << i_F3_ab1 << std::endl;
-        outfile << "\nintegral de f de " << li2 << " até " << ls2 << " = " << i_F3_ab2 << std::endl;
-        outfile << "\nintegral de f de " << li3 << " até " << ls3 << " = " << i_F3_ab3 << std::endl;
-        outfile << "\naproximacao numerica da f\'(" << d1 << ") = " << d_F2_x1 << std::endl;
-        outfile << "\naproximacao numerica da f\'(" << d2 << ") = " << d_F2_x2 << std::endl;
-        outfile << "\naproximacao numerica da f\'(" << d3 << ") = " << d_F2_x3 << std::endl;
-        outfile << "\naproximacao numerica da integral de f de " << li1 << " até " << ls1 << " = " << i_F2_ab1 << std::endl;
-        outfile << "\naproximacao numerica da integral de f de " << li2 << " até " << ls2 << " = " << i_F2_ab2 << std::endl;
-        outfile << "\naproximacao numerica da integral de f de " << li3 << " até " << ls3 << " = " << i_F2_ab3 << std::endl;
+        outfile << "\n*===========integral de f(x) no intervalo dado (analitica)============* " << std::endl;
+        outfile << "\nIntegral de f de " << li1 << " até " << ls1 << " = " << i_F3_ab1 << std::endl;
+        outfile << "\nIntegral de f de " << li2 << " até " << ls2 << " = " << i_F3_ab2 << std::endl;
+        outfile << "\nIntegral de f de " << li3 << " até " << ls3 << " = " << i_F3_ab3 << std::endl;
+        outfile << "\n*===========f'(x) no ponto dado (numerico)============* " << std::endl;
+        outfile << "\nAproximacao numerica da f\'(" << d1 << ") = " << d_F2_x1 << std::endl;
+        outfile << "\nAproximacao numerica da f\'(" << d2 << ") = " << d_F2_x2 << std::endl;
+        outfile << "\nAproximacao numerica da f\'(" << d3 << ") = " << d_F2_x3 << std::endl;
+        outfile << "\n*===========integral de f(x) no intervalo dado (numerico)============* " << std::endl;
+        outfile << "\nAproximacao numerica da integral de f de " << li1 << " até " << ls1 << " = " << i_F2_ab1 << std::endl;
+        outfile << "\nAproximacao numerica da integral de f de " << li2 << " até " << ls2 << " = " << i_F2_ab2 << std::endl;
+        outfile << "\nAproximacao numerica da integral de f de " << li3 << " até " << ls3 << " = " << i_F2_ab3 << std::endl;
         outfile.close();
 
       }
@@ -196,12 +202,15 @@ int main(){
 
         std::ofstream outfile;	
         outfile.open("RELATORIO.txt",  std::ios::app);
+        outfile << "\n*===========f(x) no ponto dado============* " << std::endl;
         outfile << "\nf(" << p1 << ") = " << F2_x1 << std::endl;
         outfile << "\nf(" << p2 << ") = " << F2_x2 << std::endl;
         outfile << "\nf(" << p3 << ") = " << F2_x3 << std::endl;
+        outfile << "\n*===========f'(x) no ponto dado (numerico)============* " << std::endl;
         outfile << "\naproximacao numerica da f\'(" << d1 << ") = " << d_F2_x1 << std::endl;
         outfile << "\naproximacao numerica da f\'(" << d2 << ") = " << d_F2_x2 << std::endl;
         outfile << "\naproximacao numerica da f\'(" << d3 << ") = " << d_F2_x3 << std::endl;
+        outfile << "\n*===========integral de f(x) no intervalo dado (numerico)============* " << std::endl;
         outfile << "\naproximacao numerica da integral de f de " << li1 << " até " << ls1 << " = " << i_F2_ab1 << std::endl;
         outfile << "\naproximacao numerica da integral de f de " << li2 << " até " << ls2 << " = " << i_F2_ab2 << std::endl;
         outfile << "\naproximacao numerica da integral de f de " << li3 << " até " << ls3 << " = " << i_F2_ab3 << std::endl;

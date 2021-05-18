@@ -156,7 +156,7 @@ void Funcao::get_dominio(){
         std::ofstream outfile;	
         outfile.open("RELATORIO.txt",  std::ios::app);
         outfile << "\n Tipo da Funcao: " <<  this->_tipo  << std::endl;
-        outfile << "\ndominio: " << dominio << std::endl;
+        outfile << "\nDominio: " << dominio << std::endl;
         outfile.close();
 
 
@@ -185,7 +185,7 @@ void Funcao::get_imagem(){
    if(maior >= -3e-10 && maior <= 3e-10) maior = 0;
 
 
-        outfile << "\nimagem: {y e R/ " << menor << " <= y <= " << maior << "} \n";
+        outfile << "Imagem: {y e R/ " << menor << " <= y <= " << maior << "} \n\n";
 
         outfile.close();
 
@@ -212,6 +212,7 @@ double Funcao::condicao_inf_menor(double &menor)
     return menor;
 }
 
+/*
 // Escreve as raizes no terminal e carrega o vector _raizes .
 //void Funcao::get_raizes()
 //{
@@ -269,7 +270,6 @@ std::vector<double> Funcao::salva_inversao_sinal()
 		if((valor_a <= 0.1 && valor_b >= -0.1) || (valor_a >= -0.1 && valor_b <= 0.1))
 		{
 	
-			/********** FLAGS ***********/
 			//std::cout << "valores x0 e x1: " << x0 << "|" << x1 << "\n";
 			//std::cout << "valores a e b: " << valor_a << "|" << valor_b << "\n";
 			for(double j=x0; j<x1;j+=delta_x1)
@@ -283,7 +283,6 @@ std::vector<double> Funcao::salva_inversao_sinal()
 
 				if((valor_c <= 0.01 && valor_d >= -0.01) || (valor_c >= -0.01 && valor_d <= 0.01))
 				{
-					/********** FLAGS **********					*/
 					//std::cout << "valores x2 e x3: " << x2 << "|" << x3 << "\n";
 					//std::cout << "size of elegiveis: " << _elegiveis.size() << "\n";	
                             for(double j=x2; j<x3;j+=delta_x2)
@@ -297,7 +296,7 @@ std::vector<double> Funcao::salva_inversao_sinal()
 
 				                if((valor_e <= 0 && valor_f >= 0) || (valor_e >= 0 && valor_f <= 0))
 				                {
-				                	/********** FLAGS **********					*/
+
 				                	//std::cout << "valores x4 e x5: " << x4 << "|" << x5 << "\n";
 					            	
 
@@ -371,6 +370,7 @@ void Funcao::compara_vetor(std::vector<double> &vec)
       std::unique(vec.begin(), vec.end()),
       vec.end());
 }
+*/
 
 // Retorna o valor da função aplicada no ponto.
 double Funcao::retorna_valor(double ponto){
