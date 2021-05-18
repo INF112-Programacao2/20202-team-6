@@ -12,12 +12,25 @@ Calculo_Numerico::Calculo_Numerico(std::string input):
 
 // Escreve o dominio no terminal (Como depende da entrada não guardei a informação).
 void Calculo_Numerico::get_max_e_min(double limite_inf, double limite_sup){
-   double maximo;
-   double minimo;
 
-   //...
+   std::cout.precision(2);
+   double maior = retorna_valor(limite_inf);
+   double menor = retorna_valor(limite_sup);
+   for(double i=limite_inf;i<limite_sup;i+=0.1)
+   {
+      if(retorna_valor(i)<menor) menor = retorna_valor(i); 
+      if(retorna_valor(i)>maior) maior = retorna_valor(i);
+   }
 
-   //std::cout << maximo << " & " << minimo << std::endl;
+   if(menor >= -3e-10 && menor <= 3e-10) menor = 0;
+   if(maior >= -3e-10 && maior <= 3e-10) maior = 0;
+
+
+   std::cout << "O menor valor local eh: " << std::fixed << menor << "|| O maior valor loca eh" << std::fixed <<  maior << "\n";
+
+   std::vector<double> max_min = {menor, maior};
+   _max_min = max_min;
+
 } 
 
 

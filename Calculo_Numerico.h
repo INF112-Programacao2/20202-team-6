@@ -9,6 +9,9 @@
 
 class Calculo_Numerico : public Funcao {
 
+protected:
+   std::vector<double> _max_min;
+
 public:
    Calculo_Numerico(std::string input); // Carrega a string _input, o vector _coeficientes e o vector _expoentes (Usando o construtor de Funcoes).
    //~Calculo_Numerico();
