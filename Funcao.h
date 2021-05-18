@@ -26,9 +26,8 @@ private:
    double retorna_derivada(double x0);
    std::vector<double> salva_inversao_sinal();
    std::vector<double> metodo_newton(std::vector<double> valores_elegiveis);
-   std::vector<double> pontos_criticos();
-   std::vector<double> retorna_imagem(std::vector<double> elegiveis);
-   bool nearlyEqual(double a, double b);
+   double condicao_inf_maior(double &maior);
+   double condicao_inf_menor(double &menor);
    void compara_vetor(std::vector<double> &vetor);
 
    // Funções auxiliares de get_parametro()

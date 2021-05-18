@@ -157,79 +157,41 @@ void Funcao::get_dominio(){
 // Escreve a  imagem no terminal e carrega a string _imagem.
 void Funcao::get_imagem(){
 
-   std::vector<double> elegiveis = pontos_criticos();
-   std::vector<double> imagem = retorna_imagem(elegiveis);
-
-   if(elegiveis.size()==0) std::cout << "A funcao nao eh limitada\n";
-   else
+   std::cout.precision(3);
+   double maior = retorna_valor(-1000);
+   double menor = retorna_valor(-1000);
+   for(double i=-1000;i<1001;i+=0.1)
    {
-      std::cout << "\nimagem: {y e R/ " << imagem[0] << " <= y <= " << imagem[1] << "} \n";
-      _imagem = imagem;
+      if(retorna_valor(i)<menor) menor = retorna_valor(i); 
+      if(retorna_valor(i)>maior) maior = retorna_valor(i);
    }
+
+   condicao_inf_menor(menor);
+   condicao_inf_maior(maior);
+
+   std::cout << "\nimagem: {y e R/ " << menor << " <= y <= " << maior << "} \n";
+
+   std::vector<double> imagem = {menor, maior};
+   _imagem = imagem;
+
 }
 
-// Retorna os pontos críticos da função
-std::vector<double> Funcao::pontos_criticos()
+// Retorna infinito se não há limite superior
+double Funcao::condicao_inf_maior(double &maior)
 {
-    std::vector<double> elegiveis; 
-    double delta_x=0.001;
+    if((retorna_valor(-1001) >= maior && retorna_valor(-1000) <= maior) ||
+        ((retorna_valor(1001) >= maior && retorna_valor(1000) <= maior))) {return maior = INFINITY;}
 
-    for(double i = -1000; i < 1000; i+=delta_x)
-    {
-        double derivada = retorna_derivada(i);
-        if(derivada >= -0.001 && derivada <= 0.001)
-            elegiveis.push_back(i);
-    }
-
-    return elegiveis;
+    return maior;
 }
 
-// Retorna um vetor com os valores max e min da função
-std::vector<double> Funcao::retorna_imagem(std::vector<double> elegiveis)
+// Retorna infinito se não há limite inferior
+double Funcao::condicao_inf_menor(double &menor)
 {
-    std::vector<double> imagem;
+        if((retorna_valor(-1001) <= menor && retorna_valor(-1000) >= menor) ||
+        ((retorna_valor(1001) <= menor && retorna_valor(1000) >= menor))) {return menor = INFINITY;}
 
-    if(elegiveis.size()==0) return imagem;
-
-    double maior = elegiveis[0];
-    double menor = elegiveis[0];
-
-    double extremo_direito = retorna_valor(1000);
-    double extremo_esquerdo = retorna_valor(-1000);
-
-    for(int i=0; i<elegiveis.size();i++)
-    {
-        if(elegiveis[i]>maior) maior = elegiveis[i];
-        if(elegiveis[i]<menor) menor = elegiveis[i];
-    }
-
-    if(retorna_valor(menor) > extremo_direito || retorna_valor(menor) > extremo_esquerdo) menor = INFINITY;
-    if(retorna_valor(maior) < extremo_direito || retorna_valor(maior) < extremo_esquerdo) maior = INFINITY;
-
-   if(menor == INFINITY) imagem.push_back(INFINITY);
-   else imagem.push_back(retorna_valor(menor));
-   if(maior == INFINITY) imagem.push_back(INFINITY);
-   else imagem.push_back(retorna_valor(maior));
-
-    return imagem;
-}
-
-// Faz um teste para valores muito próximos mas não iguais
-bool Funcao::nearlyEqual(double a, double b)
-{
-    //para mais https://floating-point-gui.de/errors/comparison/
-
-    double epsilion = 2.22045e-010;
-
-    double absA = fabs(a);
-    double absB = fabs(b);
-    double diferenca = fabs(a-b);
-
-
-    if(a == b) return true;
-    else if(a==0 || b==0 || (absA + absB < __DBL_MIN__))
-        return diferenca <= epsilion;
-    else return (diferenca / std::min((absA + absB), __DBL_MIN__)) < epsilion;
+    return menor;
 }
 
 // Escreve as raizes no terminal e carrega o vector _raizes .
