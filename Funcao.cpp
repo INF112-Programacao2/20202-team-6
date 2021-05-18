@@ -134,13 +134,13 @@ void Funcao::get_parametros(std::string input){
 
    // TIRAR ESSES PRINTS DOS EXPOENTES, COEFICIENTES E TIPO DEPOIS
    static int I = 1;
-   std::cout << "\n<Funcao " << I++ << ": " << this->_tipo << ">" << std::endl;
+  // std::cout << "\n<Funcao " << I++ << ": " << this->_tipo << ">" << std::endl;
 
-   for(int i = 0; i < _coeficientes.size(); i++)
-   {
-      std::cout << "\ncoeficientes: " << _coeficientes[i] << "\n";
-      std::cout << "expoentes: " << _expoentes[i] << "\n";
-   }
+   //for(int i = 0; i < _coeficientes.size(); i++)
+   //{
+     // std::cout << "\ncoeficientes: " << _coeficientes[i] << "\n";
+      //std::cout << "expoentes: " << _expoentes[i] << "\n";
+   //}
 }
 
 // Escreve o dominio no terminal e carrega a string _dominio.
@@ -149,7 +149,7 @@ void Funcao::get_dominio(){
 
    //'e' indica 'pertence à' e 'R' numeros reais(como e' polinomio x sempre pertence a R);
    dominio="{x e R}";
-
+   std::cout << "\n Tipo da Funcao: " <<  this->_tipo  << std::endl;
    std::cout << "\ndominio: " << dominio << std::endl;
    _dominio = dominio;
 } 

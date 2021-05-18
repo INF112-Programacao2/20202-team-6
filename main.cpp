@@ -92,15 +92,21 @@ int main(){
         f1.get_raizes();
         f1.plot(); 
         double F1_x1 = f1.retorna_valor(p1);
+        std::cout << "\nf(" << p1 << ") = " << F1_x1 << std::endl;
         double F1_x2 = f1.retorna_valor(p2);
+        std::cout << "\nf(" << p2 << ") = " << F1_x2 << std::endl;
         double F1_x3 = f1.retorna_valor(p3);
+        std::cout << "\nf(" << p3 << ") = " << F1_x3 << std::endl;
       }
       else
       {
         f1.plot(); 
         double F1_x1 = f1.retorna_valor(p1);
+        std::cout << "\nf(" << p1 << ") = " << F1_x1 << std::endl;
         double F1_x2 = f1.retorna_valor(p2);
+        std::cout << "\nf(" << p2 << ") = " << F1_x2 << std::endl;
         double F1_x3 = f1.retorna_valor(p3);
+        std::cout << "\nf(" << p3 << ") = " << F1_x3 << std::endl;
       }
    } 
 
@@ -117,23 +123,38 @@ int main(){
         f3.plot(); 
 
         double   F3_x1  = f3.retorna_valor(p1);
+        std::cout << "\nf(" << p1 << ") = " << F3_x1 << std::endl;
         double   F3_x2  = f3.retorna_valor(p2);
+        std::cout << "\nf(" << p2 << ") = " << F3_x2 << std::endl;
         double   F3_x3  = f3.retorna_valor(p3);
+        std::cout << "\nf(" << p3 << ") = " << F3_x3 << std::endl;
         double d_F3_x1  = f3.retorna_valor("derivada", d1);
+        std::cout << "\nf\'(" << d1 << ") = " << d_F3_x1 << std::endl;
         double d_F3_x2  = f3.retorna_valor("derivada", d2);
+        std::cout << "\nf\'(" << d2 << ") = " << d_F3_x2 << std::endl;
         double d_F3_x3  = f3.retorna_valor("derivada", d3);
+        std::cout << "\nf\'(" << d3 << ") = " << d_F3_x3 << std::endl;
         double i_F3_ab1  = f3.retorna_valor("integral", li1, ls1);
+        std::cout << "\nintegral de f de " << li1 << " até " << ls1 << " = " << i_F3_ab1 << std::endl;
         double i_F3_ab2  = f3.retorna_valor("integral", li2, ls2);
+        std::cout << "\nintegral de f de " << li2 << " até " << ls2 << " = " << i_F3_ab2 << std::endl;
         double i_F3_ab3  = f3.retorna_valor("integral", li3, ls3);
+        std::cout << "\nintegral de f de " << li3 << " até " << ls3 << " = " << i_F3_ab3 << std::endl;
 
         Calculo_Numerico f2(func);
 
         double d_F2_x1  = f2.retorna_valor("derivada", d1);
+        std::cout << "\naproximacao numerica da f\'(" << d1 << ") = " << d_F2_x1 << std::endl;
         double d_F2_x2  = f2.retorna_valor("derivada", d2);
+        std::cout << "\naproximacao numerica da f\'(" << d2 << ") = " << d_F2_x2 << std::endl;
         double d_F2_x3  = f2.retorna_valor("derivada", d3);
+        std::cout << "\naproximacao numerica da f\'(" << d3 << ") = " << d_F2_x3 << std::endl;
         double i_F2_ab1  = f2.retorna_valor("integral", li1, ls1);
+        std::cout << "\naproximacao numerica da integral de f de " << li1 << " até " << ls1 << " = " << i_F2_ab1 << std::endl;
         double i_F2_ab2  = f2.retorna_valor("integral", li2, ls2);
+        std::cout << "\naproximacao numerica da integral de f de " << li2 << " até " << ls2 << " = " << i_F2_ab2 << std::endl;
         double i_F2_ab3  = f2.retorna_valor("integral", li3, ls3);
+        std::cout << "\naproximacao numerica da integral de f de " << li3 << " até " << ls3 << " = " << i_F2_ab3 << std::endl;
 
 
       }
@@ -143,14 +164,23 @@ int main(){
 
         f2.plot();
         double   F2_x1  = f2.retorna_valor(p1);
+        std::cout << "\nf(" << p1 << ") = " << F2_x1 << std::endl;
         double   F2_x2  = f2.retorna_valor(p2);
+        std::cout << "\nf(" << p2 << ") = " << F2_x2 << std::endl;
         double   F2_x3  = f2.retorna_valor(p3);
+        std::cout << "\nf(" << p3 << ") = " << F2_x3 << std::endl;
         double d_F2_x1  = f2.retorna_valor("derivada", d1);
+        std::cout << "\naproximacao numerica da f\'(" << d1 << ") = " << d_F2_x1 << std::endl;
         double d_F2_x2  = f2.retorna_valor("derivada", d2);
+        std::cout << "\naproximacao numerica da f\'(" << d2 << ") = " << d_F2_x2 << std::endl;
         double d_F2_x3  = f2.retorna_valor("derivada", d3);
+        std::cout << "\naproximacao numerica da f\'(" << d3 << ") = " << d_F2_x3 << std::endl;
         double i_F2_ab1  = f2.retorna_valor("integral", li1, ls1);
+        std::cout << "\naproximacao numerica da integral de f de " << li1 << " até " << ls1 << " = " << i_F2_ab1 << std::endl;
         double i_F2_ab2  = f2.retorna_valor("integral", li2, ls2);
+        std::cout << "\naproximacao numerica da integral de f de " << li2 << " até " << ls2 << " = " << i_F2_ab2 << std::endl;
         double i_F2_ab3  = f2.retorna_valor("integral", li3, ls3);
+        std::cout << "\naproximacao numerica da integral de f de " << li3 << " até " << ls3 << " = " << i_F2_ab3 << std::endl;
       }
    } 
 
