@@ -61,9 +61,22 @@ double Calculo_Numerico::retorna_valor(std::string derivada, double ponto){
 // Retorna o valor da integral da função dado os limites de integração.
 double Calculo_Numerico::retorna_valor(std::string integral, double limite_inf, double limite_sup){
    if(integral == "integral"){
-      double int_f;
+      double int_f = 0;
 
-      //...
+      double h = (limite_sup - limite_inf)/10000.;
+
+      double x= limite_inf;
+
+      while(x <= limite_sup-h){
+        double fa = retorna_valor(x);
+        double fm = retorna_valor(x+h/2.);
+        double fb = retorna_valor(x+h);
+
+        int_f += h/6.*(fa + 4.*fm + fb);
+
+        x += h;
+      }
+
 
       return int_f;
    }else{
