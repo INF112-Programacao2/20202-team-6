@@ -43,6 +43,8 @@ public:
    void get_imagem();  // Escreve a  imagem no terminal e carrega a string _imagem.
    void get_raizes();  // Escreve as raizes no terminal e carrega o vector _raizes .
 
+   bool get_tipo_Polinomio();
+
    double retorna_valor(double ponto); // Retorna o valor da função aplicada no ponto.
 
    void plot(); // Chama o gráfico

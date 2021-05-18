@@ -364,7 +364,12 @@ double Funcao::retorna_valor(double ponto){
 	return valor_fx;
 }
 
-
+bool Funcao::get_tipo_Polinomio(){
+   if (_tipo == "Polinomio")
+     return true;
+   else
+     return false;
+}
 
 //================ Grafico ===================
 
