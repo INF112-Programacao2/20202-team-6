@@ -62,6 +62,7 @@ std::regex Funcao::get_tipo(std::string input)
 {
    // Expressão Regular
    std::regex rgx("([+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\-?\\d+)(?:\\/(\\d+)\\))?)?)?)?");
+   int empty_matches = 0;
    
    // Iterador pos. Serve para salvar as cópias dos valores das Matches. Recebe o inicio e o final da string, além da Expressão regular
    std::sregex_iterator group(input.cbegin(), input.cend(), rgx);
@@ -74,12 +75,14 @@ std::regex Funcao::get_tipo(std::string input)
    // Verificando se a função de entrada é válida
    for( ; group!=end; group++){
       
+      if(group->str(0).empty()) empty_matches++;
+
       // Define a função como raiz n-ésima / racional
       if( (group->str(3)).find("-")!=std::string::npos || (group->str(0)).find("/")!= std::string::npos) 
          this->_tipo = "Raiz n-esima/racional";
 
       try{
-         if(group->str(0).empty() && group->position() != input.length())
+         if(empty_matches > 1)
             throw std::invalid_argument("<Entrada invalida> Nao e um Polinomio ou Raiz n-esima ou racional.\nEntrada: ");
       }catch(std::invalid_argument &e){
          std::cerr << e.what() << input << std::endl;
