@@ -139,7 +139,6 @@ void Funcao::get_parametros(std::string input){
    _expoentes = expoentes;
 
    // TIRAR ESSES PRINTS DOS EXPOENTES, COEFICIENTES E TIPO DEPOIS
-   static int I = 1;
   // std::cout << "\n<Funcao " << I++ << ": " << this->_tipo << ">" << std::endl;
 
    //for(int i = 0; i < _coeficientes.size(); i++)
