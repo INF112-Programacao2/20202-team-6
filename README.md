@@ -12,28 +12,115 @@
 ## Índice
 
 - [Funções](#Funções)
-- [Instalação](#Instalação)
+- [Funcionamento](#Funcionamento)
+    - [Pré-requisitos](#Pré-requisitos)
+    - [Entrada por arquivos](#Entrada_por_arquivos)
 - [Exemplos](#Exemplos)
 - [Lista de Exceções](#Lista-de-Exceções)
 - [FAQ](#FAQ)
 - [Responsáveis](#Responsáveis)
 - [CRC](#CRC)
+- [Diagrama de Classes](#Diagrama_de_classes)
 - [Links Úteis](#Links-Úteis)
 
 
 ## Funções
 - Determinar domínio e imagem da função 
-- Determinar as raízes da função
 - Determinar <code> f(x0)</code> dado <code> x0 </code>
 - Determinar derivada e integral da função
 - Esboçar gráficos
 
-## Instalação
+## Funcionamento
+### Pré-requisitos 🔥
+
+Antes de começar, você vai precisar ter instalado em sua máquina:
+- [Gnuplot](http://www.gnuplot.info/download.html)  
+
+### Entrada por arquivos 🧾
+
+Nosso programa utiliza entrada e saída por texto para facilitar sua compreensão!
+
+Para adicionar uma função que você deseja estudar, primeiro deve abrir o arquivo <code>INPUT.txt</code> e seguir os passos dentro dele. 
+
+Assim que completo, salve-o e execute a aplicação em seu terminal. Volte para o diretório em que está o código e lá você encontrará um arquivo <code>RELATORIO.txt</code> contendo todas as informações que você deseja sobre a sua função de estudo!!
+
 
 ## Exemplos
 
+1. Função de exemplo: _24-14x-13x^2+2x^3+x^4_
+
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo0.png" alt="INPUT" align="left" width="300"></a>
+    <span> Arquivo INPUT.txt </span>
+</div>
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/output_exemplo0.png" alt="output"  align="center" width="300"></a>
+    <span> Aquivo output.jpg </span>
+</div>
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo0.png" alt="output" align="right" width="300"></a>
+    <span> Arquivo RELATORIO.txt </span>
+</div>
+
+<style>
+div.box {
+    width: 200px;
+	display: inline-block;
+}
+</style>
+
+
+2. Função de exemplo: _4x^2-3x_
+
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo1.png" alt="INPUT" align="left" width="300"></a>
+    <span> Arquivo INPUT.txt </span>
+</div>
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/output_exemplo1.png" alt="output"  align="center" width="300"></a>
+    <span> Aquivo output.jpg </span>
+</div>
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo1.png" alt="output" align="right" width="300"></a>
+    <span> Arquivo RELATORIO.txt </span>
+</div>
+
+<style>
+div.box {
+    width: 200px;
+	display: inline-block;
+}
+</style>
+
+3. Função de exemplo: _x^-3_
+
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo2.png" alt="INPUT" align="left" width="300"></a>
+    <span> Arquivo INPUT.txt </span>
+</div>
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/output_exemplo2.png" alt="output"  align="center" width="300"></a>
+    <span> Aquivo output.jpg </span>
+</div>
+<div class="box">
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo2.png" alt="output" align="right" width="300"></a>
+    <span> Arquivo RELATORIO.txt </span>
+</div>
+
+<style>
+div.box {
+    width: 200px;
+	display: inline-block;
+}
+</style>
+
 ## Lista de Exceções
 
+❌ Entrada invalilida : Quando você coloca uma função que o programa não aceita
+
+❌ Coeficiente invalido : Quando ocorre uma divisão por 0, ou seja, uma indeterminação
+
+❌  
 ## FAQ
 ### ✔️ Como devo escrever minha função?
 No momento, esperamos funções _polinômiais_. Então:
@@ -45,7 +132,7 @@ No momento, esperamos funções _polinômiais_. Então:
 - Exemplo de entrada: _2/3x^3 - 12x^(6/3) + 2x - 81/2_.
 
 ### ✔️ Posso colocar qualquer tipo de função?
-Por enquato a entrada está limitada a somente com _polinômios_, mas estamos trabalhando para adicionar outros tipos de funções!
+Por enquato a entrada está limitada a somente com _polinômios_ e funcções com _raizes_ e _expoentes negativos_, mas estamos trabalhando para adicionar outros tipos de funções!
 
 ### ✔️ Como calcula a derivada numérica?
 Utilizamos o método das diferenças finitas:  
@@ -65,8 +152,16 @@ Em código, temos:
 
       return dfx0;
 ```
+### ✔️ Como funciona a expressão ?
 
+Com a biblioteca <code>regex</code> nós comparamos a entrada com a Expressão Regular r(), se houver uma correspondência dizemos que é uma Match. Quem determina todas as Matches é a função <code>sregex_interator</code> pos e com ela podemos guardar os valores que queremos, pois eles são justamente o seu retorno!
 
+Nossa expressão regular é: 
+```c++
+[+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\-?\\d+)(?:\\/(\\d+)\\))?)?)?)?
+```
+
+[Aqui](https://github.com/INF112-Programacao2/20202-team-6/Readme/RegEx_e_Matches.txt) temos uma explicação mais detalhada do nosso trabalho com as expressões regulares!
 
 
 ## Responsáveis
@@ -80,7 +175,7 @@ Em código, temos:
 | Classe: Funcao |  |
 |-|-|
 | Responsabilidade | Colaboração |
-|   1.Atributos: Saber os coeficientes; Saber os expoentes; Saber o tipo; Saber domínio e imagem; Saber as raízes;           2.Métodos: Determinar o domínio e imagem; Determinar um f(x0); Determinar as raízes; Determinar o gráfico de f e pontos; |   Gráfico; |
+|   1.Atributos: Saber os coeficientes; Saber os expoentes; Saber o tipo; Saber domínio e imagem; Saber as raízes;           2.Métodos: Determinar o domínio e imagem; Determinar um f(x0); Determinar o gráfico de f e pontos; |   Gráfico; |
 
 | Classe: Calculo_Numerico |  |
 |-|-|
@@ -97,7 +192,12 @@ Em código, temos:
 | Responsabilidade | Colaboração |
 |   1.Atributos: Saber os coeficientes da derivada e integral; Saber os expoentes da derivada e integral; Saber a derivada; Saber integral definida; e Saber o máximo e mínimo.    2.Métodos:  Plotar um gráfico de funções ; Plotar um gráfico de duas funções; Plotar um gráfico com área hachurada  |   Funcao; Calculo_numerico; Calculo_Analitico. |
 
+## Diagrama de Classes
+
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.png" alt="output" width="400
+"></a>
+
 ## Links Úteis
 - [gnuplot](http://www.gnuplot.info/) : ferramenta para plotagem dos gráficos;
 - [Diferenciação numérica](https://pt.wikipedia.org/wiki/Diferencia%C3%A7%C3%A3o_num%C3%A9rica#:~:text=Na%20an%C3%A1lise%20num%C3%A9rica%2C%20diferencia%C3%A7%C3%A3o%20num%C3%A9rica,outros%20conhecimentos%20sobre%20a%20fun%C3%A7%C3%A3o.) : como calculamos a derivada númerica
-
+- [Expressão Regular "Regex"](https://pt.wikipedia.org/wiki/Express%C3%A3o_regular) : como salvamos os valores relevantes das funções
