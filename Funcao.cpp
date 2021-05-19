@@ -76,6 +76,8 @@ std::regex Funcao::get_tipo(std::string input)
    for( ; group!=end; group++){
       
       if(group->str(0).empty()) empty_matches++;
+      //std::cout << group->str() << std::endl;
+      //std::cout << empty_matches << std::endl;
 
       // Define a função como raiz n-ésima / racional
       if( (group->str(3)).find("-")!=std::string::npos || (group->str(0)).find("/")!= std::string::npos) 
@@ -214,171 +216,11 @@ double Funcao::condicao_inf_menor(double &menor)
     return menor;
 }
 
-/*
-// Escreve as raizes no terminal e carrega o vector _raizes .
-//void Funcao::get_raizes()
-//{
-//	//std::cout.precision(2);
-//	std::vector<double> valores_elegiveis;
-//	
-//	valores_elegiveis = salva_inversao_sinal();
-//	if(valores_elegiveis.size()==0) std::cout << "Nao ha raizes\n";
-//	else
-//	{ 
-//		std::vector<double> raizes;
-//		raizes = metodo_newton(valores_elegiveis);
-//		
-//
-//		for(int i=0;i<_raizes.size();i++)
-//			std::cout << "Raiz " << i << ": " << _raizes[i] << std::endl;
-//
-//		_raizes = raizes;
-//	}
-//} 
-
-// Retorna a derivada númerica de uma função
-double Funcao::retorna_derivada(double x0)
-{
-	//metodo das secantes
-
-	double valor_derivada=0;
-	double h = 10e-7;
-
-
-    double fmais = retorna_valor(x0 + h); 
-    double fmenos = retorna_valor(x0 - h);
-
-    valor_derivada = (fmais - fmenos)/(2.*h);
-
-    return valor_derivada;
-}
-
-// Retorna um vetor com os valores de x0 limitrofes a troca de sinal, ou seja, as possíveis raizes da função dada
-std::vector<double> Funcao::salva_inversao_sinal()
-{
-	std::vector<double> _elegiveis;
-	double delta_x0 = 0.01;
-	double delta_x1 = 0.0001;
-	double delta_x2 = 0.000001;
-
-	for(double i=-1000;i<=1000;i+=delta_x0)
-	{
-		double x0 = i-delta_x0;
-		double x1 = i;
-
-		double valor_a = retorna_valor(x0);
-		double valor_b = retorna_valor(x1);
-
-		if((valor_a <= 0.1 && valor_b >= -0.1) || (valor_a >= -0.1 && valor_b <= 0.1))
-		{
-	
-			//std::cout << "valores x0 e x1: " << x0 << "|" << x1 << "\n";
-			//std::cout << "valores a e b: " << valor_a << "|" << valor_b << "\n";
-			for(double j=x0; j<x1;j+=delta_x1)
-			{
-				double x2 = j-delta_x1;
-				double x3 = j;
-
-				double valor_c = retorna_valor(x2);
-				double valor_d = retorna_valor(x3);
-
-
-				if((valor_c <= 0.01 && valor_d >= -0.01) || (valor_c >= -0.01 && valor_d <= 0.01))
-				{
-					//std::cout << "valores x2 e x3: " << x2 << "|" << x3 << "\n";
-					//std::cout << "size of elegiveis: " << _elegiveis.size() << "\n";	
-                            for(double j=x2; j<x3;j+=delta_x2)
-			                {
-				                double x4 = j-delta_x2;
-				                double x5 = j;
-                
-				                double valor_e = retorna_valor(x4);
-				                double valor_f = retorna_valor(x5);
-
-
-				                if((valor_e <= 0 && valor_f >= 0) || (valor_e >= 0 && valor_f <= 0))
-				                {
-
-				                	//std::cout << "valores x4 e x5: " << x4 << "|" << x5 << "\n";
-					            	
-
-
-					                //para mais https://en.wikipedia.org/wiki/Brent%27s_method
-					                fabs(valor_e)<=fabs(valor_f) ? _elegiveis.push_back(x4):_elegiveis.push_back(x5);
-				                }
-			                }	
-				}
-			}	
-		}
-	}
-
-	compara_vetor(_elegiveis);
-	return _elegiveis;
-}
-
-// Retorna um vetor com as raizes da função dada
-std::vector<double> Funcao::metodo_newton(std::vector<double> valores_elegiveis)
-{
-	std::vector<double> raizes;
-
-	//para mais https://en.wikipedia.org/wiki/Newton%27s_method
-
-	// Define a tolerancia para a aproximação das raizes e o erro inicial
-	double tolerancia = 1e-12;
-	double error = tolerancia + 1; 
-	int ciclo_atual = 0;
-	int max_ciclos = 1000;
-
-	// Variavel que guarda o valor já aproximado da raiz
-	double raiz=0;
-
-	// Faz a testagem para todos os valores que se mostram elegiveis
-	for(int i=0;i<valores_elegiveis.size();i++)
-	{
-		double x = valores_elegiveis[i];
-		error = tolerancia + 1;
-
-		while (error > tolerancia && ciclo_atual < max_ciclos)
-		{
-			//metodo de newton
-
-			double h = retorna_valor(x) / retorna_derivada(x);
-			if(!isnormal(h)) h=0; // verificando se h = 0/0;
-		    raiz = x - h;
-		    error = fabs(raiz - x);
-		    x = raiz;
-		    ciclo_atual++;
-		}
-
-		if (error <= tolerancia)
-		{
-		    raizes.push_back(x);
-		}
-
-			// FLAGS
-			//std::cout << ciclo_atual << std::endl;
-			//std::cout << raiz << std::endl;
-			//std::cout << error << std::endl;
-	}
-
-	compara_vetor(raizes);
-	return raizes;
-}
-
-// Elimina os termos repitidos de um vetor
-void Funcao::compara_vetor(std::vector<double> &vec)
-{
-	vec.erase(
-      std::unique(vec.begin(), vec.end()),
-      vec.end());
-}
-*/
-
 // Retorna o valor da função aplicada no ponto.
 double Funcao::retorna_valor(double ponto){
    double valor_fx=0;
 
-	for(int i=0;i<_expoentes.size();i++)
+	for(unsigned int i=0;i<_expoentes.size();i++)
 		valor_fx += _coeficientes[i]*pow(ponto,_expoentes[i]);
 
 	return valor_fx;

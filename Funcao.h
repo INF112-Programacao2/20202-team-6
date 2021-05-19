@@ -22,13 +22,10 @@ private:
    void get_parametros(std::string input); // Carrega o vector _coeficientes e o vector _expoentes (Usado no Construtor).
    std::regex get_tipo(std::string input); // Funcão que determina o tipo da função de entrada
 
-   // Funções auxiliares de get_raiz() e get_imagem()
-   double retorna_derivada(double x0);
-   std::vector<double> salva_inversao_sinal();
-   std::vector<double> metodo_newton(std::vector<double> valores_elegiveis);
+   // Funções auxiliares e get_imagem()
+
    double condicao_inf_maior(double &maior);
    double condicao_inf_menor(double &menor);
-   void compara_vetor(std::vector<double> &vetor);
 
    // Funções auxiliares de get_parametro()
    int sign(std::string str);
@@ -41,7 +38,6 @@ public:
 
    void get_dominio(); // Escreve o dominio no terminal e carrega a string _dominio.
    void get_imagem();  // Escreve a  imagem no terminal e carrega a string _imagem.
-   void get_raizes();  // Escreve as raizes no terminal e carrega o vector _raizes .
 
    bool get_tipo_Polinomio();
 

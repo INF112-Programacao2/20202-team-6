@@ -24,7 +24,7 @@ void Grafico::pl(std::vector<double> coef, std::vector<double> exp,    std::stri
     }
 
    fprintf(arquivo, "pl ");
-   for(int i = 0; i < coef.size(); i++)
+   for(unsigned int i = 0; i < coef.size(); i++)
    {
       fprintf(arquivo, "+(%f)*x**(%f)", coef[i], exp[i]);
    }
