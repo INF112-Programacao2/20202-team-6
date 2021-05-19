@@ -54,6 +54,7 @@ int main(){
 
         std::ofstream outfile;	
         outfile.open("RELATORIO.txt",  std::ios::app);
+        outfile << "\n*===========f(x) no ponto dado============* " << std::endl;
         outfile << "\nf(" << p1 << ") = " << F1_x1 << std::endl;
         outfile << "\nf(" << p2 << ") = " << F1_x2 << std::endl;
         outfile << "\nf(" << p3 << ") = " << F1_x3 << std::endl;
