@@ -50,7 +50,7 @@ Assim que completo, salve-o e execute a aplicação em seu terminal. Volte para 
 1. Função de exemplo: _24-14x-13x^2+2x^3+x^4_
 
 <div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo0.png" alt="INPUT_0"></a>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo0.PNG" alt="INPUT_0"></a>
     <span> Arquivo INPUT.txt </span>
 </div>
 <div class="box">
@@ -58,7 +58,7 @@ Assim que completo, salve-o e execute a aplicação em seu terminal. Volte para 
     <span> Aquivo output.jpg </span>
 </div>
 <div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo0.png" alt="RELATORIO_0"></a>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo0.PNG" alt="RELATORIO_0"></a>
     <span> Arquivo RELATORIO.txt </span>
 </div>
 
@@ -73,7 +73,7 @@ div.box {
 2. Função de exemplo: _4x^2-3x_
 
 <div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo1.png" alt="INPUT_1"></a>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo1.PNG" alt="INPUT_1"></a>
     <span> Arquivo INPUT.txt </span>
 </div>
 <div class="box">
@@ -81,7 +81,7 @@ div.box {
     <span> Aquivo output.jpg </span>
 </div>
 <div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo1.png" alt="RELATORIO_1"></a>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo1.PNG" alt="RELATORIO_1"></a>
     <span> Arquivo RELATORIO.txt </span>
 </div>
 
@@ -95,7 +95,7 @@ div.box {
 3. Função de exemplo: _x^-3_
 
 <div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo2.png" alt="INPUT_2"></a>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo2.PNG" alt="INPUT_2"></a>
     <span> Arquivo INPUT.txt </span>
 </div>
 <div class="box">
@@ -103,7 +103,7 @@ div.box {
     <span> Aquivo output.jpg </span>
 </div>
 <div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo2.png" alt="RELATORIO_2"></a>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo2.PNG" alt="RELATORIO_2"></a>
     <span> Arquivo RELATORIO.txt </span>
 </div>
 
@@ -194,7 +194,7 @@ Nossa expressão regular é:
 
 ## Diagrama de Classes
 
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.png" alt="Diagrama" width="200
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.PNG" alt="Diagrama" width="200
 "></a>
 
 ## Links Úteis
