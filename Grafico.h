@@ -5,16 +5,7 @@
 #include <string>
 #include <vector>
 
-
-class gnuplot {
-protected:
-   FILE *gnuplotpipe;
-
-public:
-   gnuplot(); 
-   ~gnuplot();
-   void operator() (const std::string & command); // Functor que pega os comandos do gnuplot.
-};
+#include "gnuplot.h"
 
 class Grafico : public gnuplot {
 private:
