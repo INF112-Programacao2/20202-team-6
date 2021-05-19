@@ -64,7 +64,7 @@ Assim que completo, salve-o e execute a aplicação em seu terminal. Volte para 
 
 <style>
 div.box {
-    width: 200px;
+    width: 100px;
 	display: inline-block;
 }
 </style>
@@ -87,7 +87,7 @@ div.box {
 
 <style>
 div.box {
-    width: 200px;
+    width: 100px;
 	display: inline-block;
 }
 </style>
@@ -109,14 +109,14 @@ div.box {
 
 <style>
 div.box {
-    width: 200px;
+    width: 100px;
 	display: inline-block;
 }
 </style>
 
 ## Lista de Exceções
 
-❌ Entrada invalilida : Quando você coloca uma função que o programa não aceita
+❌ Entrada inválida : Quando você coloca uma função que o programa não aceita
 
 ❌ Coeficiente invalido : Quando ocorre uma divisão por 0, ou seja, uma indeterminação
 
@@ -161,7 +161,7 @@ Nossa expressão regular é:
 [+-]?\\d*(?:\\/(\\d+))?)(?:x(?:\\^(?:\\(?(\\-?\\d+)(?:\\/(\\d+)\\))?)?)?)?
 ```
 
-[Aqui](https://github.com/INF112-Programacao2/20202-team-6/Readme/RegEx_e_Matches.txt) temos uma explicação mais detalhada do nosso trabalho com as expressões regulares!
+[Aqui](https://github.com/INF112-Programacao2/20202-team-6/blob/master/Readme/RegEx_e_Matches.txt) temos uma explicação mais detalhada do nosso trabalho com as expressões regulares!
 
 
 ## Responsáveis
@@ -194,7 +194,7 @@ Nossa expressão regular é:
 
 ## Diagrama de Classes
 
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.png" alt="output" width="400
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.png" alt="output" width="200
 "></a>
 
 ## Links Úteis
