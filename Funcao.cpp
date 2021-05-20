@@ -84,7 +84,7 @@ std::regex Funcao::get_tipo(std::string input)
          this->_tipo = "Raiz n-esima/racional";
 
       try{
-         if(empty_matches > 2)
+         if(empty_matches > 1)
             throw std::invalid_argument("<Entrada invalida> Nao e um Polinomio ou Raiz n-esima ou racional.\nEntrada: ");
       }catch(std::invalid_argument &e){
          std::cerr << e.what() << input << std::endl;
@@ -92,7 +92,6 @@ std::regex Funcao::get_tipo(std::string input)
       }
    }
    
-   std::cout<<empty_matches <<" "<<input.length()<<"\n";
    return rgx;
 }
 
