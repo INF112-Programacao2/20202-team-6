@@ -103,7 +103,7 @@ Em código, temos:
 ```
 ### ✔️ Como funciona a expressão ?
 
-Com a biblioteca <code>regex</code> nós comparamos a entrada com a Expressão Regular r(), se houver uma correspondência dizemos que é uma Match. Quem determina todas as Matches é a função <code>sregex_interator</code> pos e com ela podemos guardar os valores que queremos, pois eles são justamente o seu retorno!
+Com a biblioteca <code>regex</code> nós comparamos a entrada com a Expressão Regular r(), se houver uma correspondência dizemos que é uma Match. Quem determina todas as Matches é a classe <code>sregex_interator group</code> e com ela podemos guardar os valores que queremos, pois eles são justamente o seu retorno!
 
 Nossa expressão regular é: 
 ```c++
