@@ -1,40 +1,40 @@
 #   Você é um aluno de pré-calculo ou de calculo?
 #   escreva (1) para pré-calculo e (2) para calculo na linha abaixo.
 a:
-
+2
 #
 #
 #   Escreva a função que você quer estudar seguindo o seguinte formato: ...
 f: 
-
+x^2
 #
 #
 #   Escreva 3 pontos de interesse para saber o valor da função aplicada neles
 p1:
- 
+ 1
 p2:
- 
+ 2
 p3:
- 
+ 3
 #
 #
 #   Escreva 3 pontos de interesse qua saber o valor da derivada da função aplicada neles
 #   (se for aluno de pré-calculo pode deixar em branco, caso preencha a informação será ignorada)
 d1:
-
+1
 d2:
-
+2
 d3:
-
+3
 #
 #
 #   Escreva até 3 intervalos de interesse qua saber o valor da integral definida da função nesse intervalo
 #   Escreva o limite inferior primeiro e separado por espaço o limite superior.
 #   (se for aluno de pré-calculo pode deixar em branco, caso preencha a informação será ignorada)
 i1:
-
+0 1
 i2:
-
+1 2
 i3:
-
+2 3
 #
