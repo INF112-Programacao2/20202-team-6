@@ -45,74 +45,22 @@ Para adicionar uma função que você deseja estudar, primeiro deve abrir o arqu
 Assim que completo, salve-o e execute a aplicação em seu terminal. Volte para o diretório em que está o código e lá você encontrará um arquivo <code>RELATORIO.txt</code> contendo todas as informações que você deseja sobre a sua função de estudo!!
 
 
-## Exemplos
-
-1. Função de exemplo: _24-14x-13x^2+2x^3+x^4_
-
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo0.PNG" alt="INPUT_0"></a>
-    <span> Arquivo INPUT.txt </span>
-</div>
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/output_exemplo0.png" alt="output_0"></a>
-    <span> Aquivo output.jpg </span>
-</div>
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo0.PNG" alt="RELATORIO_0"></a>
-    <span> Arquivo RELATORIO.txt </span>
-</div>
-
-<style>
-div.box {
-    width: 100px;
-	display: inline-block;
-}
-</style>
-
-
-2. Função de exemplo: _4x^2-3x_
-
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo1.PNG" alt="INPUT_1"></a>
-    <span> Arquivo INPUT.txt </span>
-</div>
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/output_exemplo1.png" alt="output_1"></a>
-    <span> Aquivo output.jpg </span>
-</div>
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo1.PNG" alt="RELATORIO_1"></a>
-    <span> Arquivo RELATORIO.txt </span>
-</div>
-
-<style>
-div.box {
-    width: 100px;
-	display: inline-block;
-}
-</style>
+## Exemplo
 
 3. Função de exemplo: _x^-3_
 
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo2.PNG" alt="INPUT_2"></a>
-    <span> Arquivo INPUT.txt </span>
-</div>
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/output_exemplo2.png" alt="output_2"></a>
-    <span> Aquivo output.jpg </span>
-</div>
-<div class="box">
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo2.PNG" alt="RELATORIO_2"></a>
-    <span> Arquivo RELATORIO.txt </span>
-</div>
 
-<style>
-div.box {
-    width: 100px;
-	display: inline-block;
-}
-</style>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo2.PNG" alt="INPUT_2"></a>
+<span> Arquivo INPUT.txt </span>
+
+
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/output_exemplo2.png" alt="output_2"></a>
+<span> Aquivo output.jpg </span>
+
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo2.PNG" alt="RELATORIO_2"></a>
+<span> Arquivo RELATORIO.txt </span>
+
+
 
 ## Lista de Exceções
 
@@ -121,6 +69,7 @@ div.box {
 ❌ Coeficiente inválido : Quando ocorre uma divisão por 0, ou seja, uma indeterminação
 
 ❌  
+
 ## FAQ
 ### ✔️ Como devo escrever minha função?
 No momento, esperamos funções _polinômiais_. Então:
@@ -194,7 +143,7 @@ Nossa expressão regular é:
 
 ## Diagrama de Classes
 
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.PNG" alt="Diagrama" width="200
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.PNG" alt="Diagrama" width="500
 "></a>
 
 ## Links Úteis
