@@ -16,15 +16,15 @@ denominador, fechando o parenteses no final.
 (?:)? : junta os dois anteriores e digo que eles podem ou não ocorrer
 
 Então, eu vou basicamente olhar a entrada e comparar com a Expressão Regular r(). Se a entrada corresponder com r()
-dizemos que é uma Match. Quem determina todas as Matches é o sregex_iterator pos e com ele eu posso guardar os valores
-que eu quero, porque eles são, justamente o retorno de sregex_iterator pos.
+dizemos que é uma Match. Quem determina todas as Matches é o sregex_iterator group e com ele eu posso guardar os valores
+que eu quero, porque eles são, justamente o retorno de sregex_iterator group.
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
 Matches:
 
-pos->str(x) é o retorno de sregex_iterator desreferenciado, o que me da uma std::string dos coeficientes e x é o 
-indice que identifica um grupo. A cada pos++ temos as Matches que foram encontradas pelo iterador pos ao ser construido.
+group->str(x) é o retorno de sregex_iterator desreferenciado, o que me da uma std::string dos coeficientes e x é o 
+indice que identifica um grupo. A cada group++ temos as Matches que foram encontradas pelo iterador pos ao ser construido.
 
 Exemplo: -2/3x^(3/8)-5x+x^2+9
 
