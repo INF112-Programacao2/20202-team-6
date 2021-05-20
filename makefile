@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++11 -Wall	-U__STRICT_ANSI__
+CFLAGS=-std=c++11 -Wall
 
 all: main
 

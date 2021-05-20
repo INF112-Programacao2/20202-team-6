@@ -92,6 +92,7 @@ std::regex Funcao::get_tipo(std::string input)
       }
    }
    
+   std::cout<<empty_matches <<" "<<input.length()<<"\n";
    return rgx;
 }
 
@@ -134,9 +135,8 @@ void Funcao::get_parametros(std::string input){
       expoentes.push_back(e);
    }
 
+
    // Retirando matches vazios
-   coeficientes.pop_back();
-   expoentes.pop_back();
    coeficientes.pop_back();
    expoentes.pop_back();
 

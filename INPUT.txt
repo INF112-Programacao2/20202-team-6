@@ -6,7 +6,7 @@ a:
 #
 #   Escreva a função que você quer estudar seguindo o seguinte formato: ...
 f: 
-x^2
+-2x^2 + x  
 #
 #
 #   Escreva 3 pontos de interesse para saber o valor da função aplicada neles

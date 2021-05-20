@@ -14,10 +14,6 @@ void Grafico::pl(std::vector<double> coef, std::vector<double> exp,    std::stri
 
    std::string gnupleq;
 
-   std::string output1 = "set output \"";
-   std::string output2 = ".eps\" ";
-   std::string output = output1 + para_imprimir + output2;
-
     FILE* arquivo = fopen("arquivo.txt", "w");
     if(arquivo == NULL) {
         fprintf(stderr, "Erro ao criar o arquivo.");
@@ -43,7 +39,7 @@ void Grafico::pl(std::vector<double> coef, std::vector<double> exp,    std::stri
    remove("arquivo.txt");
 
    gnuplot p;
-   p("set terminal pngcairo size 350,262 enhanced font \'Verdana,10\' ");
+   p("set terminal png");
    p("set output \"output.png\" ");   
    p("set grid");
    p("set xrange[-10:10]");
