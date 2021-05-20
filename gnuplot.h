@@ -11,7 +11,7 @@ protected:
 public:
    gnuplot(); 
    ~gnuplot();
-   void operator() (const std::string & command); // Functor que pega os comandos do gnuplot.
+   void operator() (const std::string & command); // Functor que passa o comando para ser executado no gnuplot.
 };
 
 #endif

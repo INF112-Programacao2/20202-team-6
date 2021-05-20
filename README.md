@@ -68,7 +68,7 @@ Função de exemplo: _x^-3_
 
 ❌ Coeficiente inválido : Quando ocorre uma divisão por 0, ou seja, uma indeterminação
 
-❌  
+❌  Usuário inválido : Quando o usuário não é de pré cálculo ou de cálculo
 
 ## FAQ
 ### ✔️ Como devo escrever minha função?

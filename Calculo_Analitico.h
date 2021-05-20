@@ -22,7 +22,6 @@ private:
    
 public:
     Calculo_Analitico(std::string input);// Carrega a string _input, o vector _coeficientes e o vector _expoentes (Usando o construtor de Funcoes)
-    //~Calculo_Analitico();
 
    void get_max_e_min(); // Escreve os valores máximos e mínimos no terminal e carrega double _maximo e double _minimo.
 

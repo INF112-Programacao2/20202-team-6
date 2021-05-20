@@ -11,7 +11,6 @@
 std::string ler_input(int &aluno, double &p1, double &p2, double &p3, double &d1, double &d2, double &d3, double &li1, double &ls1, double &li2, double &ls2, double &li3, double &ls3);
 
 int main(){
-
    std::string func;
    int aluno;
    double p1, p2, p3, d1, d2, d3, li1, ls1, li2, ls2, li3, ls3;
@@ -28,6 +27,7 @@ int main(){
    {
       Funcao f1(func);
       if(f1.get_tipo_Polinomio()){
+        f1.imprime_tipo();
         f1.get_dominio();
         f1.get_imagem();
         f1.plot(); 
@@ -46,6 +46,7 @@ int main(){
       }
       else
       {
+        f1.imprime_tipo();
         f1.plot(); 
         double F1_x1 = f1.retorna_valor(p1);
         double F1_x2 = f1.retorna_valor(p2);
@@ -68,6 +69,7 @@ int main(){
       if(f1.get_tipo_Polinomio()){
 
         Calculo_Analitico f3(func);
+        f3.imprime_tipo();
         f3.get_dominio();
         f3.get_imagem(); 
         f3.get_max_e_min();
@@ -122,6 +124,7 @@ int main(){
       {
         Calculo_Numerico f2(func);
 
+        f2.imprime_tipo();
         f2.plot();
         double   F2_x1  = f2.retorna_valor(p1);
         double   F2_x2  = f2.retorna_valor(p2);
@@ -171,7 +174,15 @@ std::string ler_input(int &aluno, double &p1, double &p2, double &p3, double &d1
         {
                 switch(leia[0]){
                  case 'a' :
-                   entrada >> aluno;
+ 
+                  entrada >> aluno;
+                  try{
+                    if(aluno != 1 && aluno != 2)
+                      throw std::invalid_argument("<Usuario invalido> So exitem os usuarios 1 e 2.\nEntrada: ");
+                    }catch(std::invalid_argument &e){
+                    std::cerr << e.what() << aluno << std::endl;
+                    exit(1);
+                    } 
                    break;
                  case 'f' :
                    std::getline(entrada, func);

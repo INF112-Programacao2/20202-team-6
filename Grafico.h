@@ -11,10 +11,9 @@ class Grafico : public gnuplot {
 private:
 
 public:
-   Grafico(); 
-   //~Grafico();
+   Grafico();
 
-   void pl(std::vector<double> coef, std::vector<double> exp, std::string para_imprimir);
+   void pl(std::vector<double> coef, std::vector<double> exp, std::string para_imprimir); // Pega os parametros da entrada e passa para a classe gnuplot
 
 };
 

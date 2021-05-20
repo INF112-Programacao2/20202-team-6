@@ -14,7 +14,6 @@ protected:
 
 public:
    Calculo_Numerico(std::string input); // Carrega a string _input, o vector _coeficientes e o vector _expoentes (Usando o construtor de Funcoes).
-   //~Calculo_Numerico();
 
    void get_max_e_min(double limite_inf, double limite_sup); // Escreve os valores máximos e mínimos no terminal (Como depende da entrada não guardei a informação).
 

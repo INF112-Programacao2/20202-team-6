@@ -34,12 +34,12 @@ private:
 
 public:
    Funcao(std::string input); // Carrega a string _input e chama o método get_parametros.
-   //~Funcao();
 
    void get_dominio(); // Escreve o dominio no terminal e carrega a string _dominio.
    void get_imagem();  // Escreve a  imagem no terminal e carrega a string _imagem.
+   void imprime_tipo(); // Escreve o tipo da funcao
 
-   bool get_tipo_Polinomio();
+   bool get_tipo_Polinomio(); // Retorna true se o tipo da funcao for polinomio
 
    double retorna_valor(double ponto); // Retorna o valor da função aplicada no ponto.
 

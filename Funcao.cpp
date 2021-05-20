@@ -80,11 +80,11 @@ std::regex Funcao::get_tipo(std::string input)
       //std::cout << empty_matches << std::endl;
 
       // Define a função como raiz n-ésima / racional
-      if( (group->str(3)).find("-")!=std::string::npos || (group->str(0)).find("/")!= std::string::npos) 
+      if( (group->str(3)).find("-")!=std::string::npos || (group->str(0)).find("(")!= std::string::npos) 
          this->_tipo = "Raiz n-esima/racional";
 
       try{
-         if(empty_matches > 1)
+         if(empty_matches > 2)
             throw std::invalid_argument("<Entrada invalida> Nao e um Polinomio ou Raiz n-esima ou racional.\nEntrada: ");
       }catch(std::invalid_argument &e){
          std::cerr << e.what() << input << std::endl;
@@ -134,20 +134,14 @@ void Funcao::get_parametros(std::string input){
       expoentes.push_back(e);
    }
 
+   // Retirando matches vazios
+   coeficientes.pop_back();
+   expoentes.pop_back();
    coeficientes.pop_back();
    expoentes.pop_back();
 
    _coeficientes = coeficientes;
    _expoentes = expoentes;
-
-   // TIRAR ESSES PRINTS DOS EXPOENTES, COEFICIENTES E TIPO DEPOIS
-  // std::cout << "\n<Funcao " << I++ << ": " << this->_tipo << ">" << std::endl;
-
-   //for(int i = 0; i < _coeficientes.size(); i++)
-   //{
-     // std::cout << "\ncoeficientes: " << _coeficientes[i] << "\n";
-      //std::cout << "expoentes: " << _expoentes[i] << "\n";
-   //}
 }
 
 // Escreve o dominio no terminal e carrega a string _dominio.
@@ -159,7 +153,6 @@ void Funcao::get_dominio(){
 
         std::ofstream outfile;	
         outfile.open("RELATORIO.txt",  std::ios::app);
-        outfile << "\n Tipo da Funcao: " <<  this->_tipo  << std::endl;
         outfile << "\nDominio: " << dominio << std::endl;
         outfile.close();
 
@@ -171,9 +164,9 @@ void Funcao::get_dominio(){
 // Escreve a  imagem no terminal e carrega a string _imagem.
 void Funcao::get_imagem(){
 
-        std::ofstream outfile;	
-        outfile.open("RELATORIO.txt",  std::ios::app);
-        outfile.precision(3);
+   std::ofstream outfile;	
+   outfile.open("RELATORIO.txt",  std::ios::app);
+   outfile.precision(3);
    double maior = retorna_valor(-1000);
    double menor = retorna_valor(-1000);
    for(double i=-1000;i<1001;i+=0.1)
@@ -181,6 +174,7 @@ void Funcao::get_imagem(){
       if(retorna_valor(i)<menor) menor = retorna_valor(i); 
       if(retorna_valor(i)>maior) maior = retorna_valor(i);
    }
+
 
    condicao_inf_menor(menor);
    condicao_inf_maior(maior);
@@ -196,6 +190,15 @@ void Funcao::get_imagem(){
    std::vector<double> imagem = {menor, maior};
    _imagem = imagem;
 
+}
+
+void Funcao::imprime_tipo()
+{
+   std::ofstream outfile;	
+   outfile.open("RELATORIO.txt",  std::ios::app);
+   outfile << "\n Tipo da Funcao: " <<  this->_tipo  << std::endl;
+   outfile.close();
+      
 }
 
 // Retorna infinito se não há limite superior

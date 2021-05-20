@@ -22,7 +22,7 @@ main.o: Funcao.h Calculo_Analitico.h Calculo_Numerico.h Grafico.h gnuplot.h main
 	$(CC) ${CFLAGS} -c main.cpp		
 
 main: main.o Funcao.o Calculo_Analitico.o Calculo_Numerico.o  Grafico.o gnuplot.o
-	$(CC) ${CFLAGS} -o main main.o Funcao.o Calculo_Analitico.o Calculo_Numerico.o Grafico.o gnuplot.o
+	$(CC) ${CFLAGS} -o main.exe main.o Funcao.o Calculo_Analitico.o Calculo_Numerico.o Grafico.o gnuplot.o
 
 clean:
 	rm -f main *.o
