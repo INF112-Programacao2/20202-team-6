@@ -47,17 +47,17 @@ Assim que completo, salve-o e execute a aplicação em seu terminal. Volte para 
 
 ## Exemplo
 
-3. Função de exemplo: _x^-3_
+Função de exemplo: _x^-3_
 
 
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo2.PNG" alt="INPUT_2"></a>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/INPUT_exemplo2.PNG" alt="INPUT_2" width=625></a>
 <span> Arquivo INPUT.txt </span>
 
 
 <a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/output_exemplo2.png" alt="output_2"></a>
 <span> Aquivo output.jpg </span>
 
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo2.PNG" alt="RELATORIO_2"></a>
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/RELATORIO_exemplo2.PNG" alt="RELATORIO_2" width=625></a>
 <span> Arquivo RELATORIO.txt </span>
 
 
@@ -143,7 +143,7 @@ Nossa expressão regular é:
 
 ## Diagrama de Classes
 
-<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.PNG" alt="Diagrama" width="500
+<a href="https://github.com/INF112-Programacao2/20202-team-6"><img src="./Readme/Diagrama_de_classes.PNG" alt="Diagrama" width="650
 "></a>
 
 ## Links Úteis
