@@ -30,7 +30,7 @@ void Grafico::pl(std::vector<double> coef, std::vector<double> exp,    std::stri
    }
    fprintf(arquivo, " t\"");
    const char * c = para_imprimir.c_str();
-   fprintf(arquivo, c);
+   fprintf(arquivo, "%s", c);
    fprintf(arquivo, "\" \n");
    fflush(arquivo);
    fclose(arquivo);

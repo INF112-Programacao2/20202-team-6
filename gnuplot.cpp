@@ -5,7 +5,7 @@
 
 gnuplot::gnuplot() {
     // executando o comando gnuplot no terminal. persist mantém a janela do gnuplot aberta e w abre um arquivo de texto para gravação
-    gnuplotpipe = fopen("gnuplot -persist", "w");
+    gnuplotpipe = popen("gnuplot -persist", "w");
     
     // caso não consiga gerar o arquivo
     if(!gnuplotpipe)
@@ -15,7 +15,7 @@ gnuplot::gnuplot() {
 gnuplot::~gnuplot(){
     // Armazena a string no arquivo(sai do gnuplot)
     fprintf(gnuplotpipe, "exit\n");
-    fclose(gnuplotpipe); // Fechando o fluxo de dados iniciado em _popen
+    pclose(gnuplotpipe); // Fechando o fluxo de dados iniciado em _popen
 }
 
 void gnuplot::operator() (const std::string & command){
